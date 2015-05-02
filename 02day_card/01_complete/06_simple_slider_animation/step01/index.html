@@ -1,0 +1,164 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title>image slider 스터디</title>
+        <meta charset="utf-8">
+        <link rel="stylesheet" type="text/css" href="style.css">
+
+        
+        <script  type="text/javascript" src="../../../libs/jquery-2.1.1.min.js"></script>
+
+        <script>
+            /*
+                http://tympanus.net/Development/Baraja/
+
+
+				- animation 버전 
+						
+				
+             */
+
+        </script>
+
+        
+    
+        <script>
+              
+         	var currentIndex = 0;
+         	
+            $(document).ready(function(){
+             	init();
+              	initEvent();
+            })
+            
+            // 요소 초기화 
+            function init(){
+				$cardList = $("li");
+				$cardList.eq(0).addClass("current");
+            }
+            
+            
+            // 이벤트 처리
+            function initEvent(){
+               $("#prev").click(function(){
+               		console.log("prev");
+               		
+               		prev();
+               })
+               
+               $("#next").click(function(){
+               		console.log("next");
+               		next();
+               })
+               
+            }
+            
+            
+            // 다음 카드 등장 
+            /*
+             * 진행 순서
+             * 
+             * 1. in 출력 카드 인덱스 찾기
+             * 2. in 카드 찾기
+             * 3. out 카드 찾기
+             * 4. in 카드 위치 초기화 
+             * 5. out 카드 애니메이션 실행
+             * 6. in 카드 애니메이션 실행 
+             * 
+             * 
+             */ 
+            function next(){
+            	
+	            	var outIndex = currentIndex;
+	            	
+	            	//1. in 출력 카드 인덱스 찾기
+	            	currentIndex++;
+	            	if(currentIndex>=$cardList.length){
+	            		currentIndex = 0;
+	            	}
+	            	            	
+	            	//2. in 카드 찾기
+	            	var $inCard = $cardList.eq(currentIndex);
+	            	//3. out 카드 찾기
+	            	var $outCard = $cardList.eq(outIndex);
+	            	
+	            	//4. in 카드 위치 초기화
+	            	//6. in 카드 애니메이션 실행 
+	            	$inCard.addClass("in-fade-from-left current");
+	         			
+         			//5. out 카드 애니메이션 실행
+         			$outCard.addClass("out-fade-to-right");
+            		$inCard.one("webkitAnimationEnd", function(){
+            			$outCard.removeClass();
+            			$inCard.removeClass("in-fade-from-left");
+            			
+
+            		})
+            
+            }
+            
+            
+             // 이전 카드 등장 
+            function prev(){
+            	
+	            	var outIndex = currentIndex;
+	            	
+	            	//1. in 출력 카드 인덱스 찾기
+	            	currentIndex--;
+	            	if(currentIndex<0){
+	            		currentIndex =$cardList.length-1;
+	            	}
+	            	
+	            	//2. in 카드 찾기
+	            	var $inCard = $cardList.eq(currentIndex);
+	            	//3. out 카드 찾기
+	            	var $outCard = $cardList.eq(outIndex);
+	
+					//4. in 카드 위치 초기화
+	            	//6. in 카드 애니메이션 실행	
+	            	$inCard.addClass("in-fade-from-right current");
+					$outCard.addClass("out-fade-to-left");					
+
+            		$inCard.one("webkitAnimationEnd", function(){
+            			$outCard.removeClass();
+            			$inCard.removeClass("in-fade-from-right");
+
+
+            		})
+
+            }
+        </script>
+    </head>
+
+    <body >
+        <button id="prev">이전</button>
+        <button id="next">다음</button>
+        <div class="wrapper">
+            
+            <ul class="card-container">
+                <li><img src="../../images/1.jpg" alt="image1"><h4>Coco Loko</h4><p>1Total bicycle rights in blog four loko raw denim ex, helvetica sapiente odio placeat.</p></li>
+                <li><img src="../../images/2.jpg" alt="image2"><h4>Vermouth Land</h4><p>2Velit chambray fugiat, enim aesthetic esse ullamco typewriter.</p></li>
+                <li><img src="../../images/3.jpg" alt="image3"><h4>Electrodynamics</h4><p>3Before they sold out PBR magna jean shorts non seitan ea. Dolor wolf pop-up.</p></li>
+                <li><img src="../../images/4.jpg" alt="image4"><h4>Retinal Bliss</h4><p>4Locavore vero ad, before they sold out food truck bushwick helvetica.</p></li>
+                <li><img src="../../images/5.jpg" alt="image5"><h4>Disco Fever</h4><p>5Cillum laboris consequat, qui elit retro next level skateboard freegan hella.</p></li>
+                <li><img src="../../images/6.jpg" alt="image6"><h4>Serenity</h4><p>6Truffaut wes anderson hoodie 3 wolf moon labore, fugiat lomo iphone eiusmod vegan.</p></li>
+                <li><img src="../../images/7.jpg" alt="image7"><h4>Dark Honor</h4><p>7Chillwave mustache pinterest, marfa seitan umami id farm-to-table iphone.</p></li>
+                <li><img src="../../images/8.jpg" alt="image8"><h4>Nested Happiness</h4><p>8Minim post-ironic banksy american apparel iphone wayfarers.</p></li>
+                <li><img src="../../images/9.jpg" alt="image9"><h4>Cherry Country</h4><p>9Sint vinyl Austin street art odd future id trust fund, terry richardson cray.</p></li>
+                <li><img src="../../images/10.jpg" alt="image10"><h4>Cherry Country</h4><p>10Sint vinyl Austin street art odd future id trust fund, terry richardson cray.</p></li>
+                <li><img src="../../images/11.jpg" alt="image11"><h4>Coco Loko</h4><p>11Total bicycle rights in blog four loko raw denim ex, helvetica sapiente odio placeat.</p></li>
+                <li><img src="../../images/12.jpg" alt="image12"><h4>Vermouth Land</h4><p>12Velit chambray fugiat, enim aesthetic esse ullamco typewriter.</p></li>
+                <li><img src="../../images/3.jpg" alt="image3"><h4>Electrodynamics</h4><p>13Before they sold out PBR magna jean shorts non seitan ea. Dolor wolf pop-up.</p></li>
+                <li><img src="../../images/4.jpg" alt="image4"><h4>Retinal Bliss</h4><p>14Locavore vero ad, before they sold out food truck bushwick helvetica.</p></li>
+                <li><img src="../../images/5.jpg" alt="image5"><h4>Disco Fever</h4><p>15Cillum laboris consequat, qui elit retro next level skateboard freegan hella.</p></li>
+                <li><img src="../../images/6.jpg" alt="image6"><h4>Serenity</h4><p>16Truffaut wes anderson hoodie 3 wolf moon labore, fugiat lomo iphone eiusmod vegan.</p></li>
+                <li><img src="../../images/7.jpg" alt="image7"><h4>Dark Honor</h4><p>17Chillwave mustache pinterest, marfa seitan umami id farm-to-table iphone.</p></li>
+                <li><img src="../../images/8.jpg" alt="image8"><h4>Nested Happiness</h4><p>18Minim post-ironic banksy american apparel iphone wayfarers.</p></li>
+            </ul>
+            
+        </div>
+        
+
+    </body>
+
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>무제 문서</title>
+
+	<style>
+		 /*
+         2012.12.06
+                일반적인 선택자 테스트.
+         */
+        
+        /*
+         	:disabled
+         		비활성화 상태일때.
+         		
+         	:enabled
+         		활성화 상태일때.
+         
+         */
+		input:disabled{
+			color:#EEEEEE;
+		}
+		
+		input:enabled{
+			color:#ff0000;
+		}
+	</style>
+
+</head>
+
+<body>
+<form>
+	<input  type="text" disabled value="disabled">disabled<br/>
+	<input  type="text" enabled value="enabled">enabled<br/>
+    
+
+</form>
+</body>
+</html>

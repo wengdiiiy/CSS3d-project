@@ -1,0 +1,77 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>applying perspective</title>
+		<!--
+
+			perspective 테스트
+			
+			- 3d 면 만들기
+				- perspective 면 만들기(perspective)
+					- 3d면 컨테이너 (transform-style:preserve-3d)
+						- 3d면  
+							- 3d면 컨테니어와 크로스 되게 rotate를 한다던지 translateZ값을 움직여본다. 	
+
+
+			- 테스트 방법
+					- img에 translateZ와 rotateY가 적용되었음에도 불구하고 적용되어 있지 않은 느낌이 듬
+					
+					1. img에 다음 내용을 추가 해보세요.
+						transform-style:preserve-3d;
+						transform-style이 적용 안됨 
+						transform-style은 자신이 아니라 내부에 자식들에 영향을 미침 
+						
+					2. .content에 다음 내용을 추가 해보세요.
+							transform-style:preserve-3d;
+				
+				
+					3. perspective 값을 200으로 만들어보세요.
+							그럼 사물을 바로 앞에서 보는것처럼 커 보이게 됨.			  			
+							perspective은 일반적으로 800~1500 사이 값을 사용하셍.		
+							
+											 
+		-->
+		<style>
+            * {
+                margin: 0;
+                padding: 0;
+            }
+         .container {
+         		
+                perspective: 1000px;
+                width: 1000px;
+                height: 500px;
+                outline: 1px solid #f00;
+            }
+
+			.container .content {
+            	width:500px;
+            	height:300px;
+            	background-color:rgba(200,200,200,0.5);
+            	transform:rotateX(45deg);
+            	transform-style:preserve-3d;
+         		   	
+            }
+
+            .container .content img {
+            	width:300px;
+            	height:300px;
+                transform: translateZ(-100px) rotateY(45deg);
+                
+                
+            }
+
+		</style>
+		<script  type="text/javascript" src="../libs/jquery-2.1.1.min.js"></script>
+
+		<script></script>
+
+		<body >
+			<div class="container">
+				<div class="content">
+					<img src="images/techreview-MJMW.jpg">
+				</div>
+			</div>
+
+		</body>
+</html>

@@ -1,0 +1,189 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>image slider 스터디</title>
+		<meta charset="utf-8">
+		<link rel="stylesheet" type="text/css" href="style.css">
+
+		<script  type="text/javascript" src="../../libs/jquery-2.1.1.min.js"></script>
+		<script>
+			/*
+			 *
+			 * 
+			 * scale animation 구현 하기
+			
+			 */
+
+		</script>
+
+		<script>
+			var currentIndex = 0;
+			var $pageList = 0;
+			var documentWidth = 0;
+			var documentHeight = 0;
+			
+			$(document).ready(function() {
+
+				init();
+				initPage();
+				initEvent();
+			})
+			
+			function init() {
+				$pageList = $(".page");
+
+				documentWidth = $("body").outerWidth();
+				documentHeight = $("body").outerHeight();
+				
+			}
+
+			function initPage() {
+				
+				$pageList.each(function(){
+					$(this).data("class", $(this).attr("class"));
+				})				
+				$pageList.eq(0).addClass("current-page top-page");				
+			}
+
+			function initEvent() {
+				$(".nav li a").click(function(e) {
+					e.preventDefault();
+					var direction = $(this).parent().attr("data-pageDirection");
+					var outAnimation = $(this).parent().attr("data-pageOut");
+					var inAnimation = $(this).parent().attr("data-pageIn");
+					
+					console.log(direction, outAnimation, inAnimation);
+					transition(direction, outAnimation, inAnimation);
+					
+				})
+			}
+
+	
+	
+	
+			function nextPage(){
+				// 현재 페이지 구하기 	
+				var $outPage = $pageList.filter(".current-page");
+			
+				// 신규 페이지 구하기 
+				// 신규 페이지 인덱스 값 구하기
+				currentIndex++;
+				if(currentIndex>=$pageList.length)
+					currentIndex=0;
+				
+				// 신규 페이지 구하기
+				var $inPage = $pageList.eq(currentIndex);			
+				
+				
+				return {
+					"$outPage":$outPage,
+					"$inPage":$inPage
+				}
+			}
+			
+			function prevPage(){
+				// 현재 페이지 구하기 	
+				var $outPage = $pageList.filter(".current-page")
+		
+				// 신규 페이지 구하기 
+				// 신규 페이지 인덱스 값 구하기
+				currentIndex--;
+				if(currentIndex<0)
+					currentIndex=$pageList.length-1;
+				
+				// 신규 페이지 구하기
+				var $inPage = $pageList.eq(currentIndex);			
+				
+				return {
+					"$outPage":$outPage,
+					"$inPage":$inPage
+				}
+			}
+			
+			function transition(direction,   outAnimation, inAnimation){
+				
+				var info = null;
+				if(direction=="next")
+					info = nextPage();
+				else
+					info = prevPage();
+
+				
+				
+				// out page 처리 				 
+				info.$outPage.addClass(outAnimation);
+				
+				console.log("outAnimation ", outAnimation);
+				info.$outPage.one("webkitAnimationEnd",function(){
+					$(this).removeClass("current-page "+outAnimation);
+					
+				});
+							
+				// in page 처리 
+				info.$inPage.addClass("current-page top-page "+inAnimation);
+				info.$inPage.one("webkitAnimationEnd",function(){
+					$(this).removeClass(inAnimation);
+				})
+				
+				
+			}
+		
+			
+		</script>
+	</head>
+
+	<body >
+
+		<div class="wrapper">
+			<div class="content">
+				<div class="page page-1">
+					page1
+				</div>
+				<div class="page page-2">
+					page2
+				</div>
+				<div class="page page-3">
+					page3
+				</div>
+				<div class="page page-4">
+					page4
+				</div>
+				<div class="page page-5">
+					page5
+				</div>
+			</div>
+		</div>
+		<ul class="nav">
+			
+			<li  data-pageDirection="next" data-pageOut="page-scaleDown page-fade" data-pageIn="page-moveFromRight top-page" >
+				<a href ="#">SCALE DOWN / FROM RIGHT </a>
+			</li>
+			<li  data-pageDirection="next"  data-pageOut="page-scaleDown" data-pageIn="page-moveFromLeft  top-page" >
+				<a href ="#" >SCALE DOWN / FROM LEFT</a>
+			</li>
+			<li  data-pageDirection="next"  data-pageOut="page-scaleDown" data-pageIn="page-moveFromBottom top-page" >
+				<a href ="#" >SCALE DOWN / FROM BOTTOM</a>
+			</li>
+			<li   data-pageDirection="next" data-pageOut="page-scaleDown" data-pageIn="page-moveFromTop top-page" >
+				<a href ="#" >SCALE DOWN / FROM TOP</a>
+			</li>
+			<li  data-pageDirection="next"  data-pageOut="page-scaleUp" data-pageIn="page-fromScaleUp page-scaleAniDelayTime top-page">
+				<a href ="#">SCALE UP / SCALE UP </a>
+			</li>
+			<li  data-pageDirection="next"  data-pageOut=" top-page page-moveToLeft" data-pageIn="page-fromScaleUp">
+				<a href ="#">MOVE TO LEFT /SCALE UP </a>
+			</li>
+			<li  data-pageDirection="next"  data-pageOut=" top-page page-moveToRight" data-pageIn="page-fromScaleUp">
+				<a href ="#">MOVE TO RIGHT /SCALE UP </a>
+			</li>
+			<li   data-pageDirection="next" data-pageOut=" top-page page-moveToBottom" data-pageIn="page-fromScaleUp">
+				<a href ="#">MOVE TO BOTTOM /SCALE UP </a>
+			</li>
+			<li   data-pageDirection="next" data-pageOut="top-page page-moveToTop" data-pageIn="page-fromScaleUp">
+				<a href ="#">MOVE TO TOP /SCALE UP </a>
+			</li>
+		</ul>
+
+	</body>
+
+</html>

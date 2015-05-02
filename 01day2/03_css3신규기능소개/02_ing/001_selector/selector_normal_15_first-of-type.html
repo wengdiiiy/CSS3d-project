@@ -1,0 +1,80 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>무제 문서</title>
+        <style>
+                body{
+                        font-size:9pt;
+                        font-family:"굴림";               
+                }
+                div, p{
+                        border:1px #eeeeee solid;
+                        margin:10px;
+                }
+        </style>
+<style>
+        
+        /*
+         2012.12.06
+                일반적인 선택자 테스트.
+         */
+        
+        
+        /* 
+         
+                순차 자식
+               
+                E:first-of-type
+                        - 특정  엘리먼트의 자식 요소중 첫 번째 요소 선택. 
+                        - E 요소만을 선별한 후 이중에서 1번째 요소가 선택됨. (nth-of-type과 동일)
+                        - nth-of-type(1)과 같음.
+                        
+                          
+                                 
+                
+                       
+                
+         */    
+     
+    
+     p:first-of-type{
+              border:4px solid #ff0000;
+      }
+
+        
+        
+</style>
+</head>
+
+<body>
+        <div>
+               
+                <div id="header">                               
+                        헤더 영역(div, id=header)
+                </div>
+                <p>                               
+                     테스트 내용입니다1.   
+                </p>
+                 <p>                               
+                     테스트 내용입니다2.   
+                </p>  
+                 <div id="header">                               
+                        헤더 영역(div, id=header)
+                </div>            
+        </div>  
+         <div>                
+               
+                <p>                               
+                     테스트 내용입니다1.   
+                </p>
+                 <div id="header">                               
+                        헤더 영역(div, id=header)
+                </div>
+                 <p>                               
+                     테스트 내용입니다2.   
+                </p>              
+        </div>  
+</body>
+</html>
+

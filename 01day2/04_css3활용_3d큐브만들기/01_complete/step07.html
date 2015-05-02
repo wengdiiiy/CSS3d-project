@@ -1,0 +1,269 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title>applying perspective</title>
+        <!--
+         
+         step #07
+            - 타이머 적용 
+            
+         step #06
+            - 아랫면 만들기
+        
+         step #05
+            - 뒷면 만들기
+           
+         step #04
+            - 윗면 만들기
+        
+         step #03
+            - 앞면 만들기
+        
+        step #02
+            - 4개의 면을 담을 큐브 생성
+            - 
+
+        step #01
+            - 요소에 원근감 적용하기
+
+        -->
+        <style>
+            body {
+
+                font-size: 20px;
+                -webkit-perspective: 1000px;
+                -webkit-perspective-origin: 50% 50%;
+                border: 1px solid #000000;
+                width: 800px;
+                height: 600px;
+                /*background:url(../images/bg.png) no-repeat; */
+            }
+
+            /* 큐브를 담고 있는 패널 */
+            .cube-banner-container {
+
+                left: 250px;
+                top: 250px;
+                width: 400px;
+                height: 200px;
+                position: absolute;
+                outline: 2px solid #000;
+                
+                -webkit-box-sizing: border-box;
+                -webkit-transition: -webkit-transform 0.5s ease-in;
+                /*
+                 * step #01
+                 */
+                -webkit-perspective: 1000px;
+                -webkit-perspective-origin: 50% 50%;                
+                /* 자식 요소(cube)를 3d면으로 만든다. */
+                -webkit-transform-style: preserve-3d;                
+            }
+
+            /* 큐브 */
+            .cube-banner-container .cube {
+                width: 400px;
+                height: 200px;
+                background-color: rgba(255,0,0,0.5);
+                position: absolute;
+                
+                /* step #02 
+                 * 
+                 * - 깊에를 -50px로 만든다.
+                 * -자식 요소를 3d면으로 만든다
+                */
+                -webkit-transform: translateZ(-50px);
+                -webkit-transform-style: preserve-3d;
+                -webkit-transition: -webkit-transform 0.5s ease-in;
+            }
+
+            .cube-banner-container .cube .zero {
+                width: 10px;
+                height: 10px;
+                position: absolute;
+                -webkit-box-sizing: border-box;
+                background-color: #000;
+            }
+            .cube-banner-container .cube .axis {
+                position: absolute;
+                width: 500px;
+                height: 1px;
+                border-top: 1px solid #000000;
+                background-color: #ff0000;
+            }
+
+            .cube-banner-container .cube .xaxis {
+                -webkit-transform: translateY(100px) translateX(-95px);
+            }
+            .cube-banner-container .cube .yaxis {
+                -webkit-transform: translateY(100px) translateX(-95px) rotateZ(90deg);
+            }
+
+            .cube-banner-container .cube .zaxis {
+                -webkit-transform: translateY(100px) translateX(-95px) rotateY(90deg);
+            }
+
+            .cube-banner-container .cube .face {
+                width: 400px;
+                height: 200px;
+                position: absolute;
+                font-size: 40px;
+                display: -webkit-box;
+                -webkit-box-align: center;
+                -webkit-box-pack: center;
+                opacity: 1;
+            }
+
+         
+            .cube-banner-container .cube .face {
+                border-style: solid;
+                -webkit-border-image: url("../images/cube_border.png") 13 11 11 12 stretch stretch;
+                -moz-border-image: url("../images/cube_border.png") 13 11 11 12 stretch stretch;
+                -ms-border-image: url("../images/cube_border.png") 13 11 11 12 stretch stretch;
+                -o-border-image: url("../images/cube_border.png") 13 11 11 12 stretch stretch;
+                border-image: url("../images/cube_border.png") 13 11 11 12 stretch stretch;
+                border-width: 13px 11px 11px 12px transparent;
+                -webkit-box-sizing: border-box;
+                -moz-box-sizing: border-box;
+                -ms-box-sizing: border-box;
+                -o-box-sizing: border-box;
+            }
+
+            .cube-banner-container .cube span {
+                background-color: rgba(255,255,0,0.8);
+                -webkit-border-radius: 10px;
+                padding: -20px;
+            }
+            
+            
+            
+               /*  face 1 , tranlateZ 10*/
+            .cube-banner-container .cube .front {
+                background-color: rgba(255,0,0,0.5);
+                -webkit-transform: translateZ(100px);
+                background-image: url(../images/logo_02.jpg);
+            }
+
+            .cube-banner-container .cube .top {
+
+                background-color: rgba(255,255,0,0.5);
+                -webkit-transform: rotateX(90deg) translateZ(100px);
+                background-image: url(../images/logo_01.jpg);
+            }
+
+            .cube-banner-container .cube .back {
+                background-color: rgba(0,255,0,0.5);
+                -webkit-transform: rotateX(-180deg) translateZ(100px);
+                background-image: url(../images/logo_03.jpg);
+            }
+            .cube-banner-container .cube .bottom {
+                background-color: rgba(0,0,255,0.5);
+                -webkit-transform: rotateX(-90deg) translateZ(100px);
+                background-image: url(../images/logo_04.jpg);
+            }
+
+
+        </style>
+        <script  type="text/javascript"  src="../libs/jquery-1.11.2.min.js"></script>
+
+        <script  type="text/javascript"  src="../libs/jquery.easing.1.3.js"></script>
+
+        <script>
+            var xAngle = 0,
+                yAngle = 0;
+            var cubeAlpha = 0.2;
+            var cubeXAngle = 0;
+            document.addEventListener('keydown', function(e) {
+                if (e.shiftKey == true) {
+                    switch(e.keyCode) {
+
+                    case 38:
+                        // up
+                        cubeXAngle += 5;
+                        break;
+
+                    case 40:
+                        // down
+                        cubeXAngle -= 5;
+                        break;
+                    };
+                } else {
+                    switch(e.keyCode) {
+
+                    case 37:
+                        // left
+                        yAngle -= 5;
+                        break;
+
+                    case 38:
+                        // up
+                        xAngle += 5;
+                        break;
+
+                    case 39:
+                        // right
+                        yAngle += 5;
+                        break;
+
+                    case 40:
+                        // down
+                        xAngle -= 5;
+                        break;
+                    };
+                }
+
+                showInfo();
+
+            });
+
+            $(document).ready(function() {
+
+                xAngle = -45;
+                yAngle = -45;
+                $(".cube-banner-container").css("transform", "rotateX(" + xAngle + "deg) rotateY(" + yAngle + "deg)");
+                showInfo();
+                
+                setInterval(function() {
+                    cubeXAngle -= 90;
+                    $(".cube").css("transform", "translateZ(-100px) rotateX(" + cubeXAngle + "deg)");
+                }, 2000)
+                
+            });
+
+            function showInfo() {
+                $(".cube-banner-container").css("transform", "translateX(-100px) translateY(-50px) translateZ(-300px) rotateX(" + xAngle + "deg) rotateY(" + yAngle + "deg) ");
+                $(".cube").css("transform", "translateZ(-100px) rotateX(" + cubeXAngle + "deg)");
+                $("#info").html("container rotateX=" + xAngle + ", rotateY=" + yAngle + "<br>cube rotateX=" + cubeXAngle);
+            }
+
+        </script>
+        <body >
+
+            <div id="info">
+
+            </div>
+            <div class="cube-banner-container">
+                <div class="cube">
+                    
+                    <div class="zero">
+                        0,0,0
+                    </div>
+                     <div class="face front">
+                        <span>front</span>
+                    </div>
+                    
+                    <div class="face top">
+                        <span>top</span>
+                    </div>
+                    
+                    <div class="face back">
+                        <span>back</span>
+                    </div>
+                    
+                    <div class="face bottom">
+                        <span>bottom</span>
+                    </div>
+                </div>
+            </div>
+        </body>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>무제 문서</title>
+
+	<style>
+		 /*
+         2012.12.06
+                일반적인 선택자 테스트.
+         */
+        
+        /*
+         	:before
+         		- 가상선택자.
+         		- 특정 요소의 뒤에 가상으로 요소를 추가하고 싶을때.
+         		
+         	
+         */
+        
+       	div[id*="menu"] {
+			height:200px;
+			border:1px solid #000;
+		}
+		
+		div[id*="menu"]:before {
+			content:":before 요렇게 추가되요."
+		}
+		div[id*="menu"]:target{
+			border:1px solid #ff0000;
+			background-color: #ff0000;
+		}
+		
+		div[id*="menu"]:target:before{
+			content:"target:before 요렇게 추가되요.";
+			height:20px;
+			border:1px solid #000;
+		}
+		
+	
+		
+	</style>
+
+</head>
+
+<body>
+<form>
+	<div>
+		<a href="#menu1">menu1</a>
+		<a href="#menu2">menu2</a>
+		<a href="#menu3">menu3</a>
+	</div>
+    
+    
+    <div id="menu1"> menu1 내용</div>
+    <div id="menu2"> menu2 내용</div>
+    <div id="menu3"> menu3 내용</div>
+
+</form>
+</body>
+</html>

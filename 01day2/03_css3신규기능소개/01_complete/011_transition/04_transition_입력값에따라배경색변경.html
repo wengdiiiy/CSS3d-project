@@ -1,0 +1,80 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>transition</title>
+<style>
+	.container{
+		width:600px;
+		height:400px;
+		
+		position:absolute;
+		left:10px;
+		top:30px;
+		outline:1px solid #000;
+	}	
+	
+	#target {
+	    -webkit-transition-property:background-color;		
+        -webkit-transition-duration:2s;
+        -webkit-transition-timing-function: ease-out;
+       display:block; 
+       position:absolute;
+       left:50px;
+       top:50px;
+       width:200px;
+       height:200px;
+       outline:1px solid #f00; 
+	}
+</style>
+<script  type="text/javascript" src="../libs/jquery-2.1.1.min.js"> </script> 
+<script>
+	/*
+	 
+	 - 전환 대상 프로퍼티, CSS 속성이름을 작성해주면 됨  
+	  	-webkit-transition-property: left;		
+	 
+	 - 전환 시간 : 초 = s, 밀리초 = ms 		
+        -webkit-transition-duration:0.5s;
+     
+     - 움직임 함수 작성 : ease, linear, ease0in, ease-out, ease-in-out, cubic-bezier
+        -webkit-transition-timing-function: ease-out;
+	 
+	 */
+</script>
+<script>
+/*
+ * 입력값 배경색으로 부드럽게 변경하기
+ * 
+ * 
+ */
+    var $target=null;
+	$(document).ready(function(){
+	    $target = $("#target");
+	    
+	    $("#start").click(function(){
+	    	var color = $("#color").val();
+	    	
+			$target.css({
+				"background-color":color
+			});
+			
+	    })
+	})
+</script>
+</head>
+
+<body>
+	<div class="container">   
+	    <div id="target">
+	    	
+	    </div>
+    </div>
+    
+    <div>
+        color:<input type="text" id="color">,
+        
+        <button id="start">확인</button>
+    </div>
+</body>
+</html>

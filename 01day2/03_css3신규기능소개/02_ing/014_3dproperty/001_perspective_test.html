@@ -1,0 +1,55 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>applying perspective</title>
+		<!--
+
+			perspective 테스트
+			
+			
+			- 테스트 방법
+				- perspective를 제거한 후 실행해보세요.		
+											 
+		-->
+		<style>
+            * {
+                margin: 0;
+                padding: 0;
+            }
+         .container {
+         		position:absolute;
+         		left:100px;
+         		top:50px;
+                -webkit-perspective: 1000px;
+                width: 800px;
+                height: 600px;
+                outline: 1px solid #f00;
+            }
+
+			.container .content {
+            	width:100%;
+            	height:100%;
+            	background-color:rgba(200,200,200,0.5);
+            	-webkit-transform: translateZ(-300px) rotateY(45deg);	
+         		   	
+            }
+
+            .container .content img {
+            	width:300px;
+            	height:300px;
+            }
+
+		</style>
+		<script  type="text/javascript" src="../libs/jquery-2.1.1.min.js"></script>
+	</head>
+		
+
+		<body >
+			<div class="container">
+				<div class="content">
+					<img src="./images/11.jpg">
+				</div>
+			</div>
+
+		</body>
+</html>

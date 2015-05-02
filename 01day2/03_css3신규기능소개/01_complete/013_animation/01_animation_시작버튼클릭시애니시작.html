@@ -1,0 +1,85 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>transition</title>
+<style>
+	.container{
+		width:600px;
+		height:400px;
+		
+		position:absolute;
+		left:10px;
+		top:30px;
+		outline:1px solid #000;
+	}	
+	
+	#target {
+		position:absolute;
+       left:10px;
+       top:10px;
+		-webkit-animation-name: "myAnimation";
+		-webkit-animation-duration: 2s;
+		-webkit-animation-iteration-count:3;
+		-webkit-animation-timing-function: ease-out;
+		-webkit-animation-play-state:paused;
+	}
+	@-webkit-keyframes myAnimation{	
+		from {
+			left:150px; 
+			top:150px;
+			-webkit-animation-timing-function: ease-in;
+		}
+		50% { 
+			left:200px; 
+			top:10px;
+			-webkit-animation-timing-function: ease-out;
+			
+		}
+		100% { 
+			left:400px; 
+			top:250px;
+			
+		}
+	}
+</style>
+<script  type="text/javascript" src="../libs/jquery-2.1.1.min.js"> </script> 
+<script>
+	/*
+	 
+	-http://www.w3schools.com/css/css3_animations.asp
+	 
+	 */
+</script>
+<script>
+/*
+ * 입력값 위치로 캐럭티 이동 시키기
+ * 
+ * 
+ */
+    var $target=null;
+	$(document).ready(function(){
+	    $target = $("#target");
+	  
+	    $("#start").click(function(){
+	    
+	    	$target.css({
+	    		"animation-play-state":"running"
+	    	})
+			
+	    })
+	})
+</script>
+</head>
+
+<body>
+	<div class="container">   
+	    <img src="ch2.png" id="target"> 	
+    </div>
+    
+    <div>
+       
+        <button id="start">확인</button>
+    </div>
+</body>
+</html>

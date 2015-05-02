@@ -1,0 +1,43 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>무제 문서</title>
+
+	<style>
+		 /*
+         2012.12.06
+                일반적인 선택자 테스트.
+         */
+        
+        /*
+         	:not(s)
+         		s에 해당하지 않는 요소 선택.
+         		
+         	
+         */
+  
+	a:not(.test1) {
+		border:1px solid #f00;
+	}
+		
+	</style>
+
+</head>
+
+<body>
+<form>
+	<div>
+		<a href="#menu1" class="test1">menu1</a>
+		<a href="#menu2">menu2</a>
+		<a href="#menu3">menu3</a>
+	</div>
+    
+    
+    <div id="menu1"> menu1 내용</div>
+    <div id="menu2"> menu2 내용</div>
+    <div id="menu3"> menu3 내용</div>
+
+</form>
+</body>
+</html>

@@ -1,0 +1,77 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>css3</title>
+
+<!--
+	
+	- css 버전
+	- container 크기에 맞게 container의 자식 요소들을 세로로 균등 배열 하기
+	
+-->
+
+<style type="text/css">
+	
+	html {
+		height:100%;
+	}
+	body{
+		font-size:60px;
+		height:100%;
+	}
+	#container 
+	{  
+		width: 300px; 
+		height:100%;
+		outline:1px solid #ff0000; 
+		display:-webkit-box;
+		-webkit-box-orient: vertical;
+	}  
+	#box1   
+	{  
+		width:200px;  
+		background:rgba(255,0,0,0.5);  
+		height:100px;
+	
+	}  
+	#box2 
+	{  
+		width:200px;  
+		-webkit-box-flex: 1;  
+		background:#999;  
+	}  
+	#box3 
+	{  
+		width:200px;  
+		
+		background:rgba(0,0,0,1);  
+		min-height:100px; 
+		color:#ffffff; 
+		height:100px;
+	
+	} 
+	
+</style>
+
+
+</head>
+
+<body>
+	<div id="container">
+    	
+        <div id="box1">
+       		1
+        </div>
+        <div id="box2">
+        	2
+        </div>
+        <div id="box3">
+        	3
+        </div>
+     
+    </div>
+ 
+</body>
+</html>
+

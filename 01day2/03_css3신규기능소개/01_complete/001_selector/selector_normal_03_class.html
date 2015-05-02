@@ -1,0 +1,81 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>무제 문서</title>
+        <style>
+                body{
+                        font-size:9pt;
+                        font-family:"굴림";               
+                }
+                div, p{
+                        border:1px #eeeeee solid;
+                        margin:10px;
+                }
+        </style>
+<style>
+        
+        /*
+         2012.12.06
+                일반적인 선택자 테스트.
+         */
+        
+        
+        /* 
+         
+              class 선택자.
+               
+                E.class
+                        엘리먼트가 class인 요소 선택.
+                
+         */    
+        
+        .test2
+        {
+                border:4px solid #0000ff;
+        }
+        
+        p.test1
+        {
+                border:4px solid #ff0000;
+        }
+        
+        
+        
+        
+</style>
+</head>
+
+<body>
+        <div id="sample_page" class="page test1"  data-lang="ko-kr">
+                샘플 페이지(div, id=sample_page, class=page)
+                <div id="header">                               
+                        헤더 영역(div, id=header)
+                </div>
+                <div id="content" class="sample_content test2"   data-lang="ko-kr">
+                        컨텐츠 영역(div, id=content, class=sample_content)
+                        <div> 
+                                JavaScript란?(div)
+                                <p id="data_1" class="test1">1. 자바스크립트 Core(p, id=data_1)</p>
+                                <p id="data_2">2. 자바스크립트  BOM(p, id=data_2)</p>
+                                <p id="data_3">3. 자바스크립트 DOM(p, id=data_3)</p>
+                                을 배운다는것
+                        </div>
+                        <div class="content_data test3"   data-lang="jp-ja">
+                                자바스크립트에서 배울 내용(div, class=content_data)
+                                <p class="test1">1. 자바스크립트 DOM(p)</p>
+                                <p>2. 자바스크립트 Ajax(p)</p>
+                        </div>                          
+                        <div class="content_data" data-lang="ko">
+                                jQuery에서 배울 내용(div, class=content_data)
+                                <p>1. jQuery DOM(p)</p>
+                                <p>2. jQuery Ajax(p)</p>
+                        </div>                          
+                </div>
+                <div id="footer">                               
+                        푸터 영역(div, id=footer)
+                </div>          
+        </div>  
+</body>
+</html>
+

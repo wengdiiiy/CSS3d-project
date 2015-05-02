@@ -1,0 +1,211 @@
+
+* {
+        margin: 0;
+        padding: 0;
+}
+
+html {
+	height:100%;
+}
+ body {
+    background-color: #fff;
+    height:100%;
+    font-size:9pt;
+    
+}
+
+a:active, a:link, a:visited {
+	text-decoration: none;
+	color:#333;
+}
+
+.wrapper {
+	width:100%;
+	height:100%;
+	position:relative;
+	background-color:#333;
+	overflow:hidden;
+	
+	-webkit-perspective: 1200px;
+}
+
+.content {
+	
+	width:100%;
+	height:100%;
+	position: absolute;
+	-webkit-transform-style: preserve-3d;
+}
+    
+.page {
+   	width :100%;
+   	height:100%;
+   	position: absolute;
+   	visibility:hidden;
+   	z-index:1;
+   	left:0;
+   	top:0;
+   	display:-webkit-box;
+   	-webkit-box-orient:horizontal;
+   	-webkit-box-align:center;
+   	-webkit-box-pack:center;
+   	font-weight: 300;
+	font-size: 4.4em;
+   	
+}
+
+.page-1 {
+	background-color:#0ac2d2;
+}
+.page-2 {
+	background-color:#7bb7fa;
+}
+.page-3 {
+	background-color:#60d7a9;
+}
+.page-4 {
+	background-color:#fdc162;
+}
+
+.page-5 {
+	background-color:#ff0000;
+}
+
+
+
+
+.nav {
+	list-style: none;
+	position: fixed;
+	left:0;
+	top:0;
+	z-index:200;
+}
+
+.nav li {
+	height:40px;
+	background:#fff;
+	color:#aaa;
+	
+	display:block;
+	
+	box-sizing: border-box;
+	
+}
+.nav li:hover {
+	background:#ccc;
+}
+.nav li a {
+	height:100%;
+	display:-webkit-box;
+	-webkit-box-align:center;
+   	-webkit-box-pack:center;
+
+}
+
+.current-page {
+	visibility:visible;
+		
+} 
+
+
+
+/*
+ * 왼쪽에서 등장  
+ */
+.page-moveFromLeft {
+	-webkit-animation: moveFromLeft 0.6s ease both;
+}
+@-webkit-keyframes moveFromLeft {
+	from { -webkit-transform: translateX(-100%); }
+}
+
+
+/* 오른쪽에서 등장  */
+.page-moveFromRight {
+	-webkit-animation: moveFromRight .6s ease both;
+}
+
+@-webkit-keyframes moveFromRight {
+	from { -webkit-transform: translateX(100%); }
+}
+
+
+/* 아래에서 등장 */
+.page-moveFromBottom {
+	-webkit-animation: moveFromBottom 0.6s ease both;
+}
+@-webkit-keyframes moveFromBottom {
+	from { -webkit-transform: translateY(100%); }
+}
+
+/* 위에서 등장 */
+.page-moveFromTop {
+	-webkit-animation: moveFromTop .6s ease both;
+}
+
+@-webkit-keyframes moveFromTop {
+	from { -webkit-transform: translateY(-100%); }
+}
+
+
+
+/* 왼쪽으로 사라지기 */
+.page-moveToLeft {
+	-webkit-animation: moveToLeft .6s ease both;
+}
+@-webkit-keyframes moveToLeft {
+	
+	to {-webkit-transform: translateX(-100%); }
+}
+
+/* 오른쪽으로 사라지기 */
+.page-moveToRight {
+	-webkit-animation: moveToRight .6s ease both;
+}
+
+@-webkit-keyframes moveToRight {
+	
+	to { -webkit-transform: translateX(100%); }
+}
+
+
+/* 아래로 사라지기 */
+.page-moveToBottom {
+	-webkit-animation: moveToBottom .6s ease both;
+}
+
+
+@-webkit-keyframes moveToBottom {
+	
+	to {-webkit-transform: translateY(100%); }
+}
+
+/* 위로 사라지기 */
+.page-moveToTop {
+	-webkit-animation: moveToTop .6s ease both;
+}
+
+
+@-webkit-keyframes moveToTop {
+	
+	to { -webkit-transform: translateY(-100%); }
+}
+/*
+ * 기본 이동 애니메이션 끝
+ */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

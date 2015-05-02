@@ -1,0 +1,75 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>무제 문서</title>
+        <style>
+                body{
+                        font-size:9pt;
+                        font-family:"굴림";               
+                }
+                div, p{
+                        border:1px #eeeeee solid;
+                        margin:10px;
+                }
+        </style>
+<style>
+        
+        /*
+         2012.12.06
+                일반적인 선택자 테스트.
+         */
+        
+        
+        /* 
+         
+
+                E:only-child
+                        - E요소중 자식 요소가 하나 있는 경우. 
+                        
+                
+         */    
+     
+    
+     div :only-child{
+              border:4px solid #ff0000;
+      }
+
+        
+        
+</style>
+</head>
+
+<body>
+        <div>               
+                <div id="header">                               
+                        헤더 영역(div, id=header)
+                        <p>test1</p>
+                        <p>test2</p>
+                </div>
+                <p>                               
+                     테스트 내용입니다1.   
+                </p>
+                 <p>                               
+                     테스트 내용입니다2.   
+                </p>  
+                 <div>                               
+                        헤더 영역(div, id=header)
+                        <p>test1</p>                       
+                </div>            
+        </div>  
+         <div>                               
+                <p>                               
+                     테스트 내용입니다1.   
+                </p>
+                 <div >                               
+                        헤더 영역(div, id=header)
+                        <p>test3</p>
+                </div>
+                 <p>                               
+                     테스트 내용입니다2.   
+                </p>              
+        </div>  
+</body>
+</html>
+

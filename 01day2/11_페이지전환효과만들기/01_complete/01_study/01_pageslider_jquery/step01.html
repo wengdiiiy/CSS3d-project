@@ -1,0 +1,214 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>image slider 스터디</title>
+		<meta charset="utf-8">
+		<link rel="stylesheet" type="text/css" href="style.css">
+
+		<script  type="text/javascript" src="../../libs/jquery-2.1.1.min.js"></script>
+		<script>
+			/*
+				jQuery를 활용한 이미지 슬라이더 만들기 
+			*/
+
+		</script>
+
+		<script>
+			var currentIndex = 0;
+			var $pageList = null;
+			var documentWidth = 0;
+			var documentHeight = 0;
+			
+			$(document).ready(function() {
+
+				init();
+				initPage();
+				initEvent();
+			})
+	
+        
+			
+			// 전역적으로 사용할 요소를 미리 찾아 놓기.
+			function init() {
+				$pageList = $(".page");
+
+				documentWidth = $("body").outerWidth();
+				documentHeight = $("body").outerHeight();
+				
+			}
+
+			// 페이지 초기화 .
+			function initPage() {				
+				$pageList.eq(0).addClass("current-page");				
+			}
+
+			function initEvent() {
+				$("li a").click(function(){
+					
+					var direction = $(this).parent().attr("data-direction");
+					if(direction=="prev")
+						prevPage();
+					else 
+						nextPage();
+				})	
+			}
+
+	
+	
+			// 다음 페이지 
+			/*
+			 * 진행 순서 
+			 * 1. in, out 인덱스 구하기
+			 * 2. in, out 요소 구하기
+			 * 3. in 요소 등장 위치 초기화
+			 * 4. in 요소 활성화
+			 * 5. in 요소 애니메이션 
+			 * 6. out 요소 애니메이션
+			 * 7. out 애니메이션 종료 후 out요소 비활성화
+			 * 
+			 */
+			function nextPage(){
+				
+				// 1. in, out 인덱스 구하기
+				var outIndex = currentIndex;
+				currentIndex++;
+				if(currentIndex>=$pageList.length)
+					currentIndex=0;
+				
+				
+				// 2. in, out 요소 구하기
+				// in 페이지 구하기 
+				var $inPage = $pageList.eq(currentIndex);			
+				// out 페이지 구하기 	
+				var $outPage = $pageList.eq(outIndex);
+				
+				
+				// 3. in 요소 등장 위치 초기화				
+				$inPage.css({
+					left:documentWidth
+				});
+				
+				// 4. in 요소 활성화				
+				// 나타나는 페이지를 현재 페이지로 지정
+				$inPage.addClass("current-page");
+				
+				// 5. in 요소 애니메이션	
+				// 나타나는 애니메이션 
+				$inPage.stop().animate({
+					left:0,
+					duration:600
+				});
+												
+				//6. out 요소 애니메이션																					 
+				$outPage.stop().animate({
+						left:-documentWidth,
+					}, {						
+						duration:600,
+						complete:function(){
+							//7. out 애니메이션 종료 후 out요소 비활성화							
+							$outPage.removeClass("current-page");							
+						}
+				});
+			}
+			
+			
+			/*
+			 * 진행 순서 
+			 * 1. in, out 인덱스 구하기
+			 * 2. in, out 요소 구하기
+			 * 3. in 요소 등장 위치 초기화
+			 * 4. in 요소 활성화
+			 * 5. in 요소 애니메이션 
+			 * 6. out 요소 애니메이션
+			 * 7. out 애니메이션 종료 후 out요소 비활성화
+			 * 
+			 */
+			function prevPage(){
+				// 1. in, out 인덱스 구하기
+				var outIndex = currentIndex;
+				currentIndex--;
+				if(currentIndex<0)
+					currentIndex=$pageList.length-1;
+
+				// 2. in, out 요소 구하기
+				// in 페이지 구하기 
+				var $inPage = $pageList.eq(currentIndex);			
+				// out 페이지 구하기 	
+				var $outPage = $pageList.eq(outIndex);
+				
+				
+				
+				// 3. in 요소 등장 위치 초기화 
+				$inPage.css({
+					left:-documentWidth
+				});
+				
+				// 4. in 요소 활성화
+				$inPage.addClass("current-page");
+
+				
+				// 5. in 요소 애니메이션
+				$inPage.stop().animate({
+					left:0,
+					duration:600
+				});
+				 
+				//6. out 요소 애니메이션 
+				$outPage.stop().animate({
+						left:documentWidth,
+					}, {						
+						duration:600,
+						complete:function(){			
+							//7. out 애니메이션 종료 후 out요소 비활성화				
+							$outPage.removeClass("current-page");
+							
+						}
+				});
+				
+			}
+		
+			
+		</script>
+	</head>
+
+	<body >
+
+		<div class="wrapper">
+			<div class="content">
+				<div class="page page-1">
+					page1<br>
+					PAGE TRANSITIONS
+				</div>
+				<div class="page page-2">
+					page2<br>
+					PAGE TRANSITIONS
+				</div>
+				<div class="page page-3">
+					page3<br>
+					PAGE TRANSITIONS
+				</div>
+				<div class="page page-4">
+					page4<br>
+					PAGE TRANSITIONS
+				</div>
+				<div class="page page-5">
+					page5<br>
+					PAGE TRANSITIONS
+				</div>
+			</div>
+		</div>
+
+		<ul class="nav">
+			<li data-direction="prev">
+				<a href ="#">prev</a>
+			</li>
+			<li data-direction="next">
+				<a href ="#">next</a>
+			</li>
+			
+		</ul>
+		
+
+	</body>
+
+</html>

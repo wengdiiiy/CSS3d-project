@@ -1,0 +1,190 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title>image slider 스터디</title>
+        <meta charset="utf-8">
+        <link rel="stylesheet" type="text/css" href="style.css">
+
+        <script  type="text/javascript" src="../../libs/jquery-2.1.1.min.js"></script>
+        <script>
+            /*
+                jQuery를 활용한 이미지 슬라이더 만들기 
+            */
+
+        </script>
+
+        <script>
+            var currentIndex = 0;
+            var $pageList = null;
+            var documentWidth = 0;
+            var documentHeight = 0;
+            
+            $(document).ready(function() {
+                //많은 로직 넣지 않는 것이 좋음
+                init();
+                initPage();
+                initEvent();
+            })
+    
+        
+            
+            // 전역적으로 사용할 요소를 미리 찾아 놓기.
+            function init() {
+                $pageList = $(".page");
+            }
+
+            // 페이지 초기화.
+            function initPage() {
+                //문서 너비, 높이 구하는 방법 (각각 차이점이 있음)
+                //$(body).css("width")
+                //$(body).innerWidth()
+                //$(body).outerWidth(), outerWidth(true);
+                documentWidth = $("body").outerWidth();//border가 포함된
+                documentHeight = $("body").outerHeight();//border가 포함된
+                $pageList.eq(currentIndex).addClass("current-page");
+            }
+
+            function initEvent() {
+                $(".next a").click(function(e){
+                    e.preventDefault(); //return true와 동일
+                    // 링크 뒤에 '#'이 안 붙는다.
+                    // 어떤 키의 이벤트가 안 붙도록 하고 싶다
+                    // default behavior(기본 행동) : key up, down, key change, click, 등등..
+                    nextPage();
+                })
+                $(".prev a").click(function(e){
+                    e.preventDefault(); //return true와 동일
+                    prevPage();
+                })
+            }
+
+    
+    
+            // 다음 페이지 
+            /*
+             * 진행 순서 
+             * 1. in, out 인덱스 구하기
+             * 2. in, out 요소 구하기
+             * 3. in 요소 등장 위치 초기화
+             * 4. in 요소 활성화
+             * 5. in 요소 애니메이션 
+             * 6. out 요소 애니메이션
+             * 7. out 애니메이션 종료 후 out요소 비활성화
+             * 
+             */
+            function nextPage() {
+                // 1. in, out 인덱스 구하기
+
+
+                //화면에 나타난 페이지를 없애야 하니까
+
+                // 2. in, out 요소 구하기
+                // in 페이지 구하기
+
+                // out 페이지 구하기
+
+
+                // 3. in 요소 등장 위치 초기화
+
+
+                // 4. in 요소 활성화
+                // 나타나는 페이지를 현재 페이지로 지정
+
+
+                // 5. in 요소 애니메이션
+                // 나타나는 애니메이션
+
+
+                //6. out 요소 애니메이션
+            }
+
+            /*
+             * 진행 순서 
+             * 1. in, out 인덱스 구하기
+             * 2. in, out 요소 구하기
+             * 3. in 요소 등장 위치 초기화
+             * 4. in 요소 활성화
+             * 5. in 요소 애니메이션 
+             * 6. out 요소 애니메이션
+             * 7. out 애니메이션 종료 후 out요소 비활성화
+             * 
+             */
+                function prevPage
+                (){
+                    // 1. in, out 인덱스 구하기
+                var
+                        inIndex = currentIndex - 1;
+                if(inIndex >= $pageList.length){
+                    inIndex = 0;
+                }
+                var outIndex = currentIndex;
+                currentIndex = outIndex;
+
+                // 2. in, out 요소 구하기
+                // in 페이지 구하기
+                var $inPage = $pageList.eq(inIndex);
+                // out 페이지 구하기
+                var $outPage = $pageList.eq(outIndex);
+
+
+                // 3. in 요소 등장 위치 초기화
+                $inPage.css("right", documentWidth);
+
+                // 4. in 요소 활성화
+                // 나타나는 페이지를 현재 페이지로 지정
+                $inPage.addClass("current-page");
+
+                // 5. in 요소 애니메이션
+                // 나타나는 애니메이션
+                $inPage.stop().animate({
+                    left:0
+                }, 600);//stop을 안하면, 계속해서 animation이 실행된다
+
+                //6. out 요소 애니메이션
+                $outPage.stop().animate({
+                    left:documentWidth
+                }, 600, function(){
+                    $(this).removeClass("current-page");
+                });//stop을 안하면, 계속해서 animation이 실행된다
+            }
+        </script>
+    </head>
+
+    <body >
+
+        <div class="wrapper">
+            <div class="content">
+                <div class="page page-1">
+                    page1<br>
+                    PAGE TRANSITIONS
+                </div>
+                <div class="page page-2">
+                    page2<br>
+                    PAGE TRANSITIONS
+                </div>
+                <div class="page page-3">
+                    page3<br>
+                    PAGE TRANSITIONS
+                </div>
+                <div class="page page-4">
+                    page4<br>
+                    PAGE TRANSITIONS
+                </div>
+                <div class="page page-5">
+                    page5<br>
+                    PAGE TRANSITIONS
+                </div>
+            </div>
+        </div>
+
+        <ul class="nav">
+            <li data-direction="prev" class="prev">
+                <a href ="#">prev</a>
+            </li>
+            <li data-direction="next" class="next">
+                <a href ="#">next</a>
+            </li>
+        </ul>
+    </body>
+
+</html>

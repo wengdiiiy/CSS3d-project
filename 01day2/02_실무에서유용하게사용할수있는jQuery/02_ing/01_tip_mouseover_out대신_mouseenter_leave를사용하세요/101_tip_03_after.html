@@ -1,0 +1,92 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD Xhtml 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title></title>
+
+    <style>
+        *{
+            margin:0;
+            padding:0;
+        }
+        ul.menu{
+            
+            background-color:#cccccc;
+            width:700px;
+            height:60px;
+            position:absolute;
+            left:50px;
+            top:50px;
+            overflow:hidden;
+            padding-left:20px;
+        }
+        
+        ul.menu li{
+            margin-top:15px;
+            background-color:#ffffff;
+            overflow:hidden;        
+            height:30px;    
+            float:left;     
+            border:1px solid #ff0000;
+            
+        }
+        
+        ul.menu li div{     
+            position:relative;
+        }
+            
+    </style>
+    
+    <script  type="text/javascript"  src="../libs/jquery-1.11.2.min.js"> </script>
+    <script  type="text/javascript"  src="../libs/jquery.easing.1.3.js"></script>
+    <script>
+        
+        /*
+            - 메뉴류 제작시 mouseover, mouseout 대신 mouseenter, mouseleave를 사용하세요.
+            
+            - 문제점 :
+                - 부모노드에서 자식 노드로 마우스가 이동하는 경우
+                    부모노드에서는 out, 자식노드에서는 over 이벤트가 발생하게 됨.
+         */
+        var count = 1;
+        $(document).ready(function(){       
+            
+            $("ul.menu li").on("mouseover", function(){
+                
+                $(this).find("div").stop();
+                $(this).find("div").animate({
+                    top:-30
+                },300,"easeOutCubic");
+                count++;
+                console.log(count, "over");
+            })
+            
+            $("ul.menu li").on("mouseout", function(){
+                
+                $(this).find("div").stop();
+                $(this).find("div").animate({
+                    top:0
+                },300,"easeOutCubic");
+                count++;
+                console.log(count, "out");
+            })
+         });    
+    </script>
+
+</head>
+
+<body>
+    <ul class="menu">
+        <li>
+            <div><img src="images/menu_1.png"></div>
+        </li>
+        <li >
+            <div><img src="images/menu_2.png"></div>
+        </li>
+        <li><div><img src="images/menu_3.png"></div></li>
+        <li><div><img src="images/menu_4.png"></div></li>
+        <li><div><img src="images/menu_5.png"></div></li>
+        
+    </ul>
+</body>
+</html>

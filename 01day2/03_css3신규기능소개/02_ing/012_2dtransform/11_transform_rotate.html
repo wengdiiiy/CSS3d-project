@@ -1,0 +1,46 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>rotate</title>
+<style>
+	.rect
+	{
+		width:100px;
+		height:100px;
+		-webkit-border-radius:10px;
+		background:#ff0000;
+		margin:100px;
+		text-align:center;
+		
+		
+		
+	}
+</style>
+
+<script  type="text/javascript" src="../libs/jquery-2.1.1.min.js"> </script> 
+<script>
+	var $target=null;
+	var nValue=0; 
+	$(document).ready(function(){
+	
+		$target		= $("#target");	
+		setInterval(autoRotate,20);
+	});
+	
+	function autoRotate(){
+		var transForm		= "rotate("+nValue+"deg)";	
+		$target.css({
+			"transform":transForm
+		})	
+		nValue++;
+	}
+</script>
+</head>
+
+<body>
+	<div id="target" class="rect">
+    	transForm, rotate() test
+    </div>
+</body>
+</html>

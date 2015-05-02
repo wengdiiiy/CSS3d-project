@@ -1,0 +1,184 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>image slider 스터디</title>
+		<meta charset="utf-8">
+		<link rel="stylesheet" type="text/css" href="style.css">
+
+		<script  type="text/javascript" src="../../libs/jquery-2.1.1.min.js"></script>
+		<script>
+			/*
+			
+			 */
+
+		</script>
+
+		<script>
+			var currentIndex = 0;
+			var $pageList = 0;
+			var documentWidth = 0;
+			var documentHeight = 0;
+			
+			$(document).ready(function() {
+
+				init();
+				initPage();
+				initEvent();
+			})
+			
+			// 전역적으로 사용할 요소를 미리 찾아 놓기.
+			function init() {
+				$pageList = $(".page");
+
+				documentWidth = $("body").outerWidth();
+				documentHeight = $("body").outerHeight();
+				
+			}
+
+			// 페이지 초기화 .
+			function initPage() {				
+				$pageList.eq(0).addClass("current-page");				
+			}
+
+			function initEvent() {
+				$("li a").click(function(){
+					
+					var direction = $(this).parent().attr("data-direction");
+					if(direction=="prev")
+						prevPage();
+					else 
+						nextPage();
+				})	
+			}
+
+	
+	
+			// 다음 페이지 
+			/*
+			 * 진행 순서 
+			 * 1. in, out 인덱스 구하기
+			 * 2. in, out 요소 구하기
+			 * 3. in 요소 등장 위치 초기화
+			 * 4. in 요소 활성화
+			 * 5. in 요소 애니메이션 
+			 * 		in 애니메이션 종료 후 page-moveFromRight 제거  
+			 * 6. out 요소 애니메이션
+			 * 		out 애니메이션 종료 후 current-page page-moveToLeft 제거 
+			 * 
+			 */ 
+			function nextPage(){
+				// 1. in, out 인덱스 구하기
+				var outIndex = currentIndex;
+				currentIndex++;
+				if(currentIndex>=$pageList.length)
+					currentIndex=0;
+				
+				
+				// 2. in, out 요소 구하기
+				// in 페이지 구하기 
+				var $inPage = $pageList.eq(currentIndex);			
+				// out 페이지 구하기 	
+				var $outPage = $pageList.eq(outIndex);
+								
+				
+				// 3. in 요소 등장 위치 초기화
+				// 4. in 요소 활성화
+				// 5. in 요소 애니메이션
+				$inPage.addClass("current-page page-moveFromRight");
+
+				//in 애니메이션 종료 후 "page-moveFromRight 제거
+				//one -> 한번 쓰고 버릴 것
+				//on -> 계속 이벤트 걸림
+				$inPage.one("webkitAnimationEnd", function(){
+					$(this).removeClass("page-moveFromRight");
+				});
+													
+				// 6. out 요소 애니메이션
+				$outPage.addClass("current-page page-moveToLeft");
+				// out 애니메이션 종료 후 current-page page-moveToLeft 제거
+				$outPage.one("webkitAnimationEnd", function(){
+					$(this).removeClass("current-page page-moveToLeft");
+				});
+			}
+			
+			
+			// 이전 페이지
+			/*
+			 * 진행 순서 
+			 * 1. in, out 인덱스 구하기
+			 * 2. in, out 요소 구하기
+			 * 3. in 요소 등장 위치 초기화
+			 * 4. in 요소 활성화
+			 * 5. in 요소 애니메이션 
+			 * 		in 애니메이션 종료 후 page-moveFromLeft 제거  
+			 * 6. out 요소 애니메이션
+			 * 		out 애네미엿ㄴ 종료 후 current-page page-moveToRight 제거 
+			 * 
+			 */  
+			function prevPage(){
+				// 1. in, out 인덱스 구하기
+				var outIndex = currentIndex;
+				currentIndex--;
+				if(currentIndex<0)
+					currentIndex=$pageList.length-1;
+				
+				
+				// 2. in, out 요소 구하기
+				// in 페이지 구하기
+				var $inPage = $pageList.eq(currentIndex);
+				// out 페이지 구하기
+				var $outPage = $pageList.eq(outIndex);
+
+
+				//in 애니메이션 종료 후 "page-moveFromRight 제거
+				//one -> 한번 쓰고 버릴 것
+				//on -> 계속 이벤트 걸림
+
+				// 6. out 요소 애니메이션
+				// out 애니메이션 종료 후 current-page page-moveToLeft 제거
+
+			}
+		</script>
+	</head>
+
+	<body >
+
+		<div class="wrapper">
+			<div class="content">
+				<div class="page page-1">
+					page1<br>
+					PAGE TRANSITIONS
+				</div>
+				<div class="page page-2">
+					page2<br>
+					PAGE TRANSITIONS
+				</div>
+				<div class="page page-3">
+					page3<br>
+					PAGE TRANSITIONS
+				</div>
+				<div class="page page-4">
+					page4<br>
+					PAGE TRANSITIONS
+				</div>
+				<div class="page page-5">
+					page5<br>
+					PAGE TRANSITIONS
+				</div>
+			</div>
+		</div>
+
+		<ul class="nav">
+			<li data-direction="prev">
+				<a href ="#">prev</a>
+			</li>
+			<li data-direction="next">
+				<a href ="#">next</a>
+			</li>
+			
+		</ul>
+		
+
+	</body>
+
+</html>

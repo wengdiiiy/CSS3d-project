@@ -1,0 +1,195 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title>image slider 스터디</title>
+        <meta charset="utf-8">
+        <link rel="stylesheet" type="text/css" href="style.css">
+
+        <script  type="text/javascript" src="../../libs/jquery-2.1.1.min.js"></script>
+        <script>
+            /*
+                미션: 
+                move animation 만들기 
+             */
+
+        </script>
+
+        <script>
+            var currentIndex = 0;
+            var $pageList = 0;
+            var documentWidth = 0;
+            var documentHeight = 0;
+            
+            $(document).ready(function() {
+
+                init();
+                initPage();
+                initEvent();
+            })
+            
+            // 전역적으로 사용할 요소를 미리 찾아 놓기.
+            function init() {
+                $pageList = $(".page");
+
+                documentWidth = $("body").outerWidth();
+                documentHeight = $("body").outerHeight();
+                
+            }
+
+            // 페이지 초기화 .
+            function initPage() {               
+                $pageList.eq(0).addClass("current-page");               
+            }
+
+            function initEvent() {
+                $("li a").click(function(e){
+                    e.preventDefault();
+                    var $page = $(this).parent();
+                    var direction = $page.attr("data-pageDirection");
+                    var outAnimation =$page.attr("data-pageOut");
+                    var inAnimation = $page.attr("data-pageIn");
+                    
+                    console.log(direction, outAnimation, inAnimation);
+                    transition(direction, outAnimation, inAnimation);
+                    
+                })  
+            }
+    
+            
+    
+            // 다음 페이지 
+            function nextPage(){
+                // 1. in, out 인덱스 구하기
+                var outIndex = currentIndex;
+                currentIndex++;
+                if(currentIndex>=$pageList.length)
+                    currentIndex=0;
+                
+                
+                // 2. in, out 요소 구하기
+                // in 페이지 구하기 
+                var $inPage = $pageList.eq(currentIndex);           
+                // out 페이지 구하기  
+                var $outPage = $pageList.eq(outIndex);          
+
+                return {
+                    "$outPage":$outPage,
+                    "$inPage":$inPage
+                }
+            }
+            
+            // 이전 페이지 
+            function prevPage(){
+                // 1. in, out 인덱스 구하기
+                var outIndex = currentIndex;
+                currentIndex--;
+                if(currentIndex<0)
+                    currentIndex=$pageList.length-1;
+                
+                
+                // 2. in, out 요소 구하기
+                // in 페이지 구하기 
+                var $inPage = $pageList.eq(currentIndex);           
+                // out 페이지 구하기  
+                var $outPage = $pageList.eq(outIndex);      
+                                        
+                                
+            
+                
+                return {
+                    "$outPage":$outPage,
+                    "$inPage":$inPage
+                }
+                
+            }
+            
+            // 전환 처리 전문 함수 
+            function transition(direction, outAnimation, inAnimation){
+                
+                var info = null;
+                if(direction=="next")
+                    info = nextPage();
+                else
+                    info = prevPage();
+                    
+                    
+                // 사라지는 애니메이션
+                info.$outPage.addClass(outAnimation);
+                info.$outPage.one("webkitAnimationEnd", function(){
+                    $(this).removeClass("current-page "+outAnimation);
+                });
+                    
+                    
+                // 나타나는 애니메이션               
+                // 나타나는 페이지를 현재 페이지로 지정
+                info.$inPage.addClass("current-page "+inAnimation);
+
+                info.$inPage.one("webkitAnimationEnd", function(){
+                    $(this).removeClass(inAnimation);
+                }); 
+            }
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+        </script>
+    </head>
+
+    <body >
+
+        <div class="wrapper">
+            <div class="content">
+                <div class="page page-1">
+                    page1<br>
+                    PAGE TRANSITIONS
+                </div>
+                <div class="page page-2">
+                    page2<br>
+                    PAGE TRANSITIONS
+                </div>
+                <div class="page page-3">
+                    page3<br>
+                    PAGE TRANSITIONS
+                </div>
+                <div class="page page-4">
+                    page4<br>
+                    PAGE TRANSITIONS
+                </div>
+                <div class="page page-5">
+                    page5<br>
+                    PAGE TRANSITIONS
+                </div>
+            </div>
+        </div>
+
+        <ul class="nav">
+            <li data-pageDirection="prev" data-pageIn="page-moveFromLeft" data-pageOut="page-moveToRight" >
+                <a href ="#">MOVE FROM LEFT / TO RIGHT </a>
+            </li>
+            <li data-pageDirection="next" data-pageIn="page-moveFromRight" data-pageOut="page-moveToLeft" >
+                <a href ="#" >MOVE FROM RIGHT / TO LEFT</a>
+            </li>
+            <li data-pageDirection="next" data-pageIn="page-moveFromBottom" data-pageOut="page-moveToTop" >
+                <a href ="#" >MOVE  FROM BOTTOM / TO TOP</a>
+            </li>
+            <li data-pageDirection="prev" data-pageIn="page-moveFromTop" data-pageOut="page-moveToBottom" >
+                <a href ="#" >MOVE FROM TOP / TO BOTTOM</a>
+            </li>
+            
+        </ul>
+
+    </body>
+
+</html>

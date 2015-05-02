@@ -1,0 +1,117 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title>image slider 스터디</title>
+        <meta charset="utf-8">
+        <link rel="stylesheet" type="text/css" href="style.css">
+
+        
+        <script  type="text/javascript" src="../../../libs/jquery-2.1.1.min.js"></script>
+
+        <script>
+            /*
+                http://tympanus.net/Development/Baraja/
+                
+                step #05
+                	- 0.1초 단위로 카드 나오게 처리
+                	
+	
+             */
+
+        </script>
+
+        
+    
+        <script>
+              
+            var $cardList =null;  
+            $(document).ready(function(){
+                init();
+                initEvent();
+            })
+            
+            // 요소 초기화 
+            function init(){
+               $cardList = $("li");
+                
+                $cardList.each(function(index){
+                    $(this).css({
+                        zIndex:$cardList.length-index
+                    })
+                })
+            }
+            
+            // 이벤트 처리
+            function initEvent(){
+                $("#start").click(function(){
+                    
+                    // 시작 각도 값
+                    var angle =0;
+                    
+                    // 00~-360 사이에 배열하기 위해 이미지가 가져야할 각도 구하기 
+                    // 도를 이미지 개수 만큼 나눔 
+                    var step = (360/($cardList.length));
+                    
+                    console.log(step);
+                    // 이미지 회전하기
+                    $cardList.each(function(index){
+                       
+                        // 여기에 코드를 입력해주세요.
+                        $(this).css({
+                            transform:"rotate("+angle+"deg)"
+            
+                        })
+                        angle-=step;
+                    })
+                })
+                
+                 $("#close").click(function(){
+                 
+                 	
+                    // 여기에 코드를 입력해주세요.
+                    $cardList.each(function(index){
+                       
+                        $(this).css({
+                            transform:"rotate("+0+"deg)"
+                        })
+                       
+                    })
+                })
+            }
+            
+        </script>
+    </head>
+
+    <body >
+        <button id="start">펼치기</button>
+         <button id="close">닫기</button>
+        <div class="wrapper">
+            
+            <ul id="cardList" class="card-container">
+                <li><img src="../../images/1.jpg" alt="image1"><h4>Coco Loko</h4><p>1Total bicycle rights in blog four loko raw denim ex, helvetica sapiente odio placeat.</p></li>
+                <li><img src="../../images/2.jpg" alt="image2"><h4>Vermouth Land</h4><p>2Velit chambray fugiat, enim aesthetic esse ullamco typewriter.</p></li>
+                <li><img src="../../images/3.jpg" alt="image3"><h4>Electrodynamics</h4><p>3Before they sold out PBR magna jean shorts non seitan ea. Dolor wolf pop-up.</p></li>
+                <li><img src="../../images/4.jpg" alt="image4"><h4>Retinal Bliss</h4><p>4Locavore vero ad, before they sold out food truck bushwick helvetica.</p></li>
+                <li><img src="../../images/5.jpg" alt="image5"><h4>Disco Fever</h4><p>5Cillum laboris consequat, qui elit retro next level skateboard freegan hella.</p></li>
+                <li><img src="../../images/6.jpg" alt="image6"><h4>Serenity</h4><p>6Truffaut wes anderson hoodie 3 wolf moon labore, fugiat lomo iphone eiusmod vegan.</p></li>
+                <li><img src="../../images/7.jpg" alt="image7"><h4>Dark Honor</h4><p>7Chillwave mustache pinterest, marfa seitan umami id farm-to-table iphone.</p></li>
+                <li><img src="../../images/8.jpg" alt="image8"><h4>Nested Happiness</h4><p>8Minim post-ironic banksy american apparel iphone wayfarers.</p></li>
+                <li><img src="../../images/9.jpg" alt="image9"><h4>Cherry Country</h4><p>9Sint vinyl Austin street art odd future id trust fund, terry richardson cray.</p></li>
+                <li><img src="../../images/10.jpg" alt="image10"><h4>Cherry Country</h4><p>10Sint vinyl Austin street art odd future id trust fund, terry richardson cray.</p></li>
+                <li><img src="../../images/11.jpg" alt="image11"><h4>Coco Loko</h4><p>11Total bicycle rights in blog four loko raw denim ex, helvetica sapiente odio placeat.</p></li>
+                <li><img src="../../images/12.jpg" alt="image12"><h4>Vermouth Land</h4><p>12Velit chambray fugiat, enim aesthetic esse ullamco typewriter.</p></li>
+                <li><img src="../../images/3.jpg" alt="image3"><h4>Electrodynamics</h4><p>13Before they sold out PBR magna jean shorts non seitan ea. Dolor wolf pop-up.</p></li>
+                <li><img src="../../images/4.jpg" alt="image4"><h4>Retinal Bliss</h4><p>14Locavore vero ad, before they sold out food truck bushwick helvetica.</p></li>
+                <li><img src="../../images/5.jpg" alt="image5"><h4>Disco Fever</h4><p>15Cillum laboris consequat, qui elit retro next level skateboard freegan hella.</p></li>
+                 <li><img src="../../images/6.jpg" alt="image6"><h4>Serenity</h4><p>16Truffaut wes anderson hoodie 3 wolf moon labore, fugiat lomo iphone eiusmod vegan.</p></li>
+                  <li><img src="../../images/7.jpg" alt="image7"><h4>Dark Honor</h4><p>17Chillwave mustache pinterest, marfa seitan umami id farm-to-table iphone.</p></li>
+                  
+                <li><img src="../../images/8.jpg" alt="image8"><h4>Nested Happiness</h4><p>18Minim post-ironic banksy american apparel iphone wayfarers.</p></li>
+            </ul>
+            
+        </div>
+        
+
+    </body>
+
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD Xhtml 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<title></title>
+    <style>
+        #parent {
+        	width:300px;
+        	height:300px;
+        	position:absolute;
+        	left:100px;
+        	top:100px;
+        	background-color:#f00;
+        }
+        
+         #child {
+        	width:100px;
+        	height:100px;
+        	position:absolute;
+        	left:100px;
+        	top:100px;
+        	
+        	background-color:#fff;
+        	
+        }
+        
+    </style>
+    <script>
+   
+    </script>	
+	<script  type="text/javascript"  src="../libs/jquery-1.11.2.min.js"> </script>
+
+    <script>
+    	var count=0;
+        $(document).ready(function(){
+    
+            // 메뉴아이템에 마우스 이벤트 추가하기.
+            $("#parent").mouseover(function(e){
+            	count++;
+                console.log("mouseover ",e.target.id, count);
+            });
+            
+            
+            $("#parent").mouseout(function(e){
+                count++;
+                console.log("mouseout ",e.target.id, count);
+            });
+        });
+        
+    </script>
+	
+</head>
+
+<body>
+	<div id="parent">
+		parent
+		<div id="child">
+			child
+		</div>
+	</div>
+</body>
+</html>

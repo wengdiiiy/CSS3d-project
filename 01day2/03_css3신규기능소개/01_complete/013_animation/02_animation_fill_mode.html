@@ -1,0 +1,128 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>transition</title>
+<style>
+	.container{
+		width:600px;
+		height:400px;
+		
+		position:absolute;
+		left:10px;
+		top:30px;
+		outline:1px solid #000;
+	}	
+	
+	#target {
+		position:absolute;
+       left:10px;
+       top:250px;
+	}
+	
+	
+	#target.none {
+		-webkit-animation-delay:2s;
+		-webkit-animation-name:"myLeftIn";
+		-webkit-animation-timing-function: ease-in;
+		-webkit-animation-duration: 2s;
+		-webkit-animation-fill-mode:none;	
+	}
+	
+	#target.forwards {
+		-webkit-animation-delay:2s;
+		-webkit-animation-name:"myLeftIn";
+		-webkit-animation-timing-function: ease-in;
+		-webkit-animation-duration: 2s;
+		-webkit-animation-fill-mode:forwards;	
+	}
+	
+	#target.backwards {
+		-webkit-animation-delay:2s;
+		-webkit-animation-name:"myLeftIn";
+		-webkit-animation-timing-function: ease;
+		-webkit-animation-duration: 2s;
+		-webkit-animation-fill-mode:backwards;	
+		
+	}
+	
+	#target.both {
+		-webkit-animation-delay:2s;
+		-webkit-animation-name:"myLeftIn";
+		-webkit-animation-timing-function: ease-in;
+		-webkit-animation-duration: 1s;
+		-webkit-animation-fill-mode:both;		
+	}
+	
+	@-webkit-keyframes myLeftIn{	
+		0% {
+			left:200px; 
+			
+		}
+	
+		100% { 
+			left:500px; 
+		}
+	}
+	
+</style>
+<script  type="text/javascript" src="../libs/jquery-2.1.1.min.js"> </script> 
+<script>
+	/*
+	 
+	-http://www.w3schools.com/css/css3_animations.asp
+	 
+	 */
+</script>
+<script>
+/*
+ * animation-fill-mode test 
+  
+ * 
+ */
+    var $target=null;
+	$(document).ready(function(){
+	    $target = $("#target");
+	  
+	   $("#none").click(function(){
+
+	    	$target.removeClass();
+	    	$target.addClass("none");
+			
+	    })
+	    
+	    $("#forwards").click(function(){
+
+	    	$target.removeClass();
+	    	$target.addClass("forwards");
+			
+	    })
+	    
+	    $("#backwards").click(function(){
+	    	$target.removeClass();
+	    		$target.addClass("backwards");
+	
+	    })
+	    
+	    $("#both").click(function(){
+	    	$target.removeClass();
+			$target.addClass("both");
+			
+	    })
+	})
+</script>
+</head>
+
+<body>
+	<div class="container">   
+	    <img src="ch2.png" id="target"> 	
+    </div>
+    
+    <div>
+    	<button id="none">none</button>
+        <button id="forwards">forwards</button>
+        <button id="backwards">backwards</button>
+        <button id="both">both</button>
+    </div>
+</body>
+</html>

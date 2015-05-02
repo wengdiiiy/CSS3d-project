@@ -1,0 +1,61 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>무제 문서</title>
+        <style>
+                body{
+                        font-size:9pt;
+                        font-family:"굴림";               
+                }
+                div, p{
+                        border:1px #eeeeee solid;
+                        margin:10px;
+                }
+        </style>
+<style>
+        
+        /*
+         2012.12.06
+         속성 선택자 테스트.
+                - 특정 속성값에 해당하는 요소만을 선택할 수 있음.   
+         */
+        
+        
+        /* 
+         
+               머리글을 포함하는 속성 표현식
+               
+                -[attr|=value]
+                속성값이 V로 시작하거나 V-로 시작 
+                다국어 지원을 위해 CSS 규격에 도입.
+                
+         */    
+        
+        *[data-lang|="ko"]{
+                 border:4px #ff0000 solid;
+        }
+        
+        
+</style>
+</head>
+
+<body>
+	<div data-lang="ko">                               
+		ko인 경우 
+	</div>
+ 	<div data-lang="ko en-en jp-ja">                               
+		ko en-en jp-ja 인 경우 
+	</div>
+	<div data-lang="ko- en-en jp-ja">
+		ko- en-en jp-ja 인 경우 
+	</div>
+	<div data-lang="ko-kr en-en jp-ja" >
+		ko-kr en-en jp-ja 인 경우
+	</div>
+	<div data-lang="ko-kren-en jp-ja">                               
+		ko-kren-en jp-ja 인 경우 
+	</div>
+</body>
+</html>
+

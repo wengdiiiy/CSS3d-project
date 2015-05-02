@@ -1,0 +1,44 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>rotate</title>
+<style>
+	#img1 {
+		-webkit-transform: translateY(100px) rotate(45deg);
+		
+	}
+</style>
+
+
+<script src="../libs/jquery-1.9.1.min.js"></script>
+
+<script>
+	
+	$(document).ready(function(){
+	
+		$("#img1").click(function(){
+			alert("click");
+		})
+	});
+</script>
+</head>
+
+<body>
+	
+	<div>
+		<p>다음 이미지를 45도 회전 시켜 표현해주세요.</p>
+		<img src="./images/logo_02.jpg">
+	</div>
+	
+	<div>
+		<p>CSS3 에서는  </p>
+		<p>방법 : transform을 활용한 이미지 회전.</p>
+		<p>특징 : <br>
+			1.45도 회전한 이미지를 신규로 만들어야함.(X)<br>
+			2. 마우스 이벤트 처리시 hit 영역이 너무 커짐.(X)
+		</p>
+		<img src="./images/logo_02.jpg" id="img1">
+	</div>
+</body>
+</html>

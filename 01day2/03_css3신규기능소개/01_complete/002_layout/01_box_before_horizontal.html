@@ -1,0 +1,70 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>css3</title>
+
+<!--
+	
+	- 1번과 3번 그대로인 상태에서 2번만 늘어나기.
+	
+-->
+<style type="text/css">
+
+	body{
+		font-size:60px;
+	}
+	#container 
+	{  
+		width: 100%;  
+		position:relative; 
+		overflow:hidden;
+	}  
+	#box1   
+	{  
+		width:350px;  
+		background:#ff0000;  
+		min-height:100px;
+		position:absolute; 
+	}  
+	#box2 
+	{  
+	
+		background:#999;  
+		min-height:100px; 
+		margin:0 150px 0 350px; 
+		z-index:1;
+		position:relative;
+	}  
+	
+	#box3 
+	{  
+		width:150px;  
+		background:#000000;  
+		min-height:100px; 
+		margin-left:-150px;
+		color:#ffffff; 
+		position:absolute; 
+		right:0px; top:0px; 
+	} 	
+</style>
+
+
+</head>
+
+<body>
+	<div id="container">
+    	
+        <div id="box1">
+       		1
+        </div>
+        <div id="box2">
+        	2
+        </div>
+        <div id="box3">
+        	3
+        </div>
+    </div>
+ 
+</body>
+</html>
