@@ -1,0 +1,142 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>image slider 스터디</title>
+		<meta charset="utf-8">
+		<link rel="stylesheet" type="text/css" href="style.css">
+
+		<script  type="text/javascript" src="../../../libs/jquery-2.1.1.min.js"></script>
+		<script>
+            /*
+             실제 사이트 : http://tympanus.net/Tutorials/3DRestaurantMenu/
+
+			
+			step #07
+				- 닫기 애니메이션 구현하기
+				
+			step #06
+				- 닫기 버튼 추가하기
+				
+			step #05
+				- 열기 애니메이션 구현하기
+					 
+			step #04
+				- 메뉴 구분 선 넣기 
+				
+			step #03
+				- 오른쪽 면 만들기
+             		 	- 브라우저에서 오른쪽면 회전 값을 변경하며 테스트 하기
+             		 	
+			step #02
+				- 가운데 면 만들기 
+				
+				
+             step #01
+             	- 왼쪽 면 만들기 
+				- 핵심
+					1. .menu에 perspective 적용
+	             		transform-style 적용 
+	             	
+	             	2. z-index 값 적용하기
+		            	 - cover-left 100
+		             	- cover-middle 80
+		             	- cover-right 90
+             		
+             		3. 왼쪽면 회전축 잡기 
+             		 	- 브라우저에서 왼쪽면 회전 값을 변경하며 테스트 하기 
+             * */
+
+		</script>
+		
+		<script>
+			$(document).ready(function(){
+				
+				$(".cover-left .btn-open").click(function(e){
+					$(".cover-left").addClass("open");
+					$(".cover-right").addClass("open");
+					// step #06
+					$(".cover-right .btn-close").addClass("open");
+					
+					e.preventDefault();
+				})
+				
+				// step #07
+				$(".cover-right .btn-close").click(function(e){
+					$(".cover-left").removeClass("open");
+					$(".cover-right").removeClass("open");
+					$(".cover-right .btn-close").removeClass("open");
+					
+					e.preventDefault();
+				})
+			})
+		</script>
+	</head>
+
+	<body >
+		<div class="wrapper">
+			<!-- perspective -->
+			<div class="menu">
+				<div class="cover-left">
+					<div class="face front">
+						<div class="content">
+							<p>
+								left-front
+							</p>
+							<p>
+								<a href="#" class="btn-open">열기</a>
+							</p>
+						</div>
+					</div>
+					<div class="face back">
+						<div class="content">
+							<p>
+								left-back
+							</p>
+							
+						</div>
+						
+						<div class="overlay"> </div>
+
+					</div>
+				</div>
+			
+	
+				<div class="cover-middle">
+					<div class="face">
+						<div class="content">
+							<p>
+								middle
+							</p>
+						</div>
+						 
+						<div class="overlay"> </div>
+					</div>
+				</div>
+				
+				
+				
+				
+				<div class="cover-right">
+					<div class="face front">
+						<div class="content">
+							<p>
+								right-front
+							</p>
+						</div>
+					</div>
+					<div class="face back">
+						<span class="btn-close">Close</span>
+						<div class="content">
+							<p>
+								right-back
+							</p>
+						</div>
+
+					</div>
+				</div>
+			
+			</div>			
+		</div>
+	</body>
+
+</html>
