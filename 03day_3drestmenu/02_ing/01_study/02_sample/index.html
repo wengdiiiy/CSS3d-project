@@ -5,19 +5,182 @@
         <meta charset="utf-8">
 
         <style>
+            * {
+                margin: 0;
+                padding: 0;
+            }
+
+            body {
+                padding:30px
+            }
+
+            .wrapper {
+                width: 300px;
+                height: 300px;
+                margin: 0 auto;
+            }
+
+            .menu {
+                position: relative;
+                width: 100%;
+                height: 100%;
+                /* 여기에 코드 입력 */
+                perspective:1500px
+
+            }
+
+            .menu .cover {
+                width: 100%;
+                height: 100%;
+
+                position: absolute;
+                /* 여기에 코드 입력 */
+                transform-style:preserve-3d;
+                -webkit-transform-style:preserve-3d;
+                transform-origin:0 0;
+            }
+
+            .menu .cover.left{
+                background:#ff0000;
+                -webkit-transform:rotateY(-42deg) translateX(-236px) translateZ(-34px);
+                -webkit-transform-style: preserve-3d;
+                transform-style: preserve-3d;
+            }
+
+            .menu .cover_wrap{
+                width: 100%;
+                height: 100%;
+
+                position: absolute;
+                /* 여기에 코드 입력 */
+                transform-style:preserve-3d;
+                -webkit-transform-style:preserve-3d;
+                transform-origin:0 0;
+                -webkit-transform: translateZ(-170px) rotateY(0deg);
+            }
+            .menu .cover.center{
+                width:600px;
+                background:#0000ff;
+                -webkit-transform:translateZ(-316px) translateX(-194px) rotateY(56deg);
+                -webkit-transform-style: preserve-3d;
+                transform:translateZ(-316px) translateX(-194px) rotateY(56deg);
+                transform-style: preserve-3d;
+                transform-origin:100% 0;
+            }
+
+            .menu .cover.right{
+                background:#ff0000;
+                transform:rotateY(-41deg) translateX(171px) translateZ(-311px);
+                transform-style: preserve-3d;
+                transform-origin: 100% 0;
+            }
+
+            .menu .cover .front {
+                position: absolute;
+                left: 0;
+                top: 0;
+                width: 100%;
+                height: 100%;
+                /* 여기에 코드 입력 */
+                -webkit-backface-visibility:hidden;
+            }
+
+            .menu .cover .back {
+                position: absolute;
+                right: 0;
+                top: 0;
+                width: 100%;
+                height: 100%;
+                /* 여기에 코드 입력 */
+                -webkit-backface-visibility:hidden;
+                transform:rotateY(180deg)
+            }
         </style>
-
-        <script  type="text/javascript" src="../../../libs/jquery-2.1.1.min.js"></script>
-        <script>
-            $(document).ready(function() {
-                console.log("test");
-            })
-
-        </script>
     </head>
 
     <body >
+    <script  type="text/javascript" src="../../../libs/jquery-2.1.1.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            console.log("test");
+        })
 
+        var x = 0;
+        var y = 0;
+        var z = 0;
+
+        document.addEventListener('keydown', function(e) {
+            switch(String.fromCharCode(e.keyCode)) {
+
+                case "Q":
+                    x += 20;
+                    break;
+
+                case "W":
+                    x -= 20;
+                    break;
+
+                case "A":
+                    y += 20;
+                    break;
+
+                case "S":
+                    y -= 20;
+                    break;
+                case "Z":
+                    z += 20;
+                    break;
+
+                case "X":
+                    z -= 20;
+                    break;
+            };
+
+            update();
+
+        });
+    </script>
+
+    <div id="info">
+        00
+    </div>
+        <div class="wrapper">
+            <!-- perspective -->
+            <div class="menu">
+                <!-- 3d -->
+                <div class="cover left">
+                    <div class="front">
+                        front
+                        <img src="ch2.png">
+                    </div>
+                    <div class="back">
+                        <img src="ch3.png">
+                    </div>
+                </div>
+                <div class="cover_wrap">
+                    <!-- 3d -->
+                    <div class="cover center">
+                        <div class="front">
+                            front
+                            <img src="ch2.png">
+                        </div>
+                        <div class="back">
+                            <img src="ch3.png">
+                        </div>
+                    </div>
+                    <!-- 3d -->
+                    <div class="cover right">
+                        <div class="front">
+                            front
+                            <img src="ch2.png">
+                        </div>
+                        <div class="back">
+                            <img src="ch3.png">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </body>
 
 </html>
