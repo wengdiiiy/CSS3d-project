@@ -50,8 +50,21 @@
         
         <script>
             $(document).ready(function(){
-                
-               
+
+                $(".btn-open").click(function(){
+                    $(".cover-left").addClass("open");
+                    $(".cover-right").addClass("open");
+                    if($(".cover-left")[0].classList.contains('close')){
+                        $(".cover-left").removeClass("close");
+                        $(".cover-right").removeClass("close");
+                    }
+                });
+
+                $(".btn-close").click(function(){
+                    $(".cover-left").removeClass("open").addClass("close");
+                    $(".cover-right").removeClass("open").addClass("close");
+                });
+
             })
         </script>
     </head>
@@ -81,7 +94,6 @@
                      </div>
                 </div>
             
-                <!--    
                 <div class="cover-middle">
                     <div class="face">
                         <div class="content">
@@ -93,10 +105,8 @@
                         <div class="overlay"> </div>
                     </div>
                 </div>
-                -->
-                
-                
-                <!--
+
+
                 <div class="cover-right">
                     <div class="face front">
                         <div class="content">
@@ -115,8 +125,7 @@
 
                     </div>
                 </div>
-                -->
-            
+
             </div>          
         </div>
     </body>
