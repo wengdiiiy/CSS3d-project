@@ -6,7 +6,6 @@
 
 html{
 	height:100%;
-	
 }
 
  body {
@@ -88,8 +87,82 @@ a:active, a:link, a:visited {
 	text-align: justify;
 }
 
+.flip{
+	position:absolute;
+	left:0;
+	top:0;
+	width:50%;
+	height:100%;
+	box-sizing:border-box;
+	overflow:hidden;
+	background-color:#FFF;
+
+	-webkit-transform-style:preserve-3d;
+	-webkit-backface-visibility:hidden;
+}
+
+.flip .content{
+	width:200%
+}
+
+.flip.left-page{
+	padding:10px 0 0 5%;
+	outline:1px solid #F00;
+}
+.flip.left-page .content{
+	color:#F00;
+}
+.flip.right-page{
+	padding:10px 5% 0 0;
+	outline:1px solid #00F;
+	left:50%
+}
+
+.flip.right-page .content{
+	color:#00F;
+	transform:translateX(-50%)
+}
 
 
 
+/* NEXT */
+.page-flipOutLeft{
+	-webkit-transform-origin:0% 50%;
+	-webkit-animation:flipOutLeft 3s both ease-in
+}
 
+@-webkit-keyframes flipOutLeft{
+	to{-webkit-transform:rotateY(-180deg)}
+}
 
+.page-flipInLeft{
+	z-index:100;
+	-webkit-transform-origin:100% 50%;
+	-webkit-animation:flipInLeft 3s both ease-in
+}
+
+@-webkit-keyframes flipInLeft{
+	from{-webkit-transform:rotateY(180deg)}
+	to{-webkit-transform:rotateY(0deg)}
+}
+
+/* PREV */
+.page-flipOutRight{
+	-webkit-transform-origin:100% 50%;
+	-webkit-animation:flipOutRight 3s both ease-in
+}
+
+@-webkit-keyframes flipOutRight{
+	to{-webkit-transform:rotateY(180deg)}
+}
+
+.page-flipInRight{
+	z-index:100;
+	-webkit-transform-origin:0% 50%;
+	-webkit-animation:flipInRight 3s both ease-in
+}
+
+@-webkit-keyframes flipInRight{
+	from{-webkit-transform:rotateY(-180deg)}
+	to{-webkit-transform:rotateY(0deg)}
+}

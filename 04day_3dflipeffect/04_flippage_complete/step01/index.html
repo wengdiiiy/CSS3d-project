@@ -1,7 +1,7 @@
 
 <!DOCTYPE HTML>
 <html>
-    <head>
+<head>
         <title>image slider 스터디</title>
         <meta charset="utf-8">
         <link rel="stylesheet" type="text/css" href="style.css">
@@ -28,13 +28,88 @@
 
         </script>
 		<script>
-			$(document).ready(function() {
-				
-			
-				
-			})
-		</script>
-        
+            var $pageContainer = null;
+            var $pageList = null;
+            var currentIndex = 0;
+            $(document).ready(function() {
+                init();
+                initEvent();
+                nextPage();
+            });
+
+            var init = function(){
+                $pageContainer = $(".page-container");
+                $pageList = $(".page");
+            };
+
+            var initEvent = function(){
+                $("#next").click(function(){
+                    nextPage();
+                });
+                $("#prev").click(function(){
+                    prevPage();
+                });
+            };
+
+            var nextPage = function(){
+                var outIndex = currentIndex;
+                var inIndex = currentIndex + 1;
+
+                if(inIndex >= $pageList.length){
+                    inIndex = 0;
+                }
+
+                currentIndex = inIndex;
+
+                var $outPage = $pageList.eq(outIndex);
+                var $tempPage = $outPage.clone();
+
+                $tempPage.removeClass();
+                $tempPage.addClass('content');
+
+                //out page-left 만들기
+                var $outLeft = $("<div class='flip out left-page'></div>").append($tempPage);
+                $pageContainer.append($outLeft);
+
+                //out page-right 만들기
+                var $outRight = $("<div class='flip out right-page'></div>").append($tempPage.clone());
+                $pageContainer.append($outRight);
+
+
+                /////
+                var $inPage = $pageList.eq(inIndex);
+                var $tempPage = $inPage.clone();
+
+                $tempPage.removeClass();
+                $tempPage.addClass('content');
+
+                //in page-left 만들기
+                var $inLeft = $("<div class='flip in left-page'></div>").append($tempPage);
+                $outLeft.before($inLeft);
+
+                //in page-right 만들기
+                var $inRight = $("<div class='flip in right-page'></div>").append($tempPage.clone());
+                $inLeft.after($inRight);
+
+                //애니메이션
+                //현재 페이지에서 current 제거
+                $outPage.removeClass("current");
+                $inPage.addClass("current");
+
+                $outRight.addClass("page-flipOutLeft");
+                $inLeft.addClass("page-flipInLeft");
+
+                $inLeft.one('webkitAnimationEnd', function(){
+                    $inLeft.remove();
+                    $inRight.remove();
+                    $outLeft.remove();
+                    $outRight.remove();
+                })
+            };
+
+            var prevPage = function(){
+            };
+        </script>
     </head>
 
     <body >
@@ -100,7 +175,6 @@
 
                             <p><em>From <a href="http://www.gutenberg.org/ebooks/41595" target="_blank">"The Funny Side of Physic"</a> by A. D. Crabtre</em></p>                     
                     </div>
-                
                     <div class="page">
 
             				<h2>Why we die</h2>

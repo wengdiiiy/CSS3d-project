@@ -9,6 +9,14 @@
         <script>
 			/*
 
+			원근감 -> perspective
+			3D -> transform-style:preserve-3d
+			양면 사용 -> backface-visibility:hidden
+			(돌아가는 순간 뒷면이 보이는 순간 안 보이도록 양면 효과를 줌)
+			animation
+			회전 -> transform
+			기준 점 잡기 -> transform-origin
+
 				step #10
 					- in right 페이지에 애니 추가
 					- 완료 
@@ -62,13 +70,32 @@
         <script>
             
 			$(document).ready(function() {
-				
+				$("#next").click(function(){
+					$(".flip.out.right-page").addClass("page-flipOutLeft");
+					$(".flip.in.left-page").addClass("page-flipInLeft");
+					if($(".flip.out.left-page")[0].classList.length > 0){
+						$(".flip.out.left-page").removeClass("page-flipOutRight");
+						$(".flip.in.right-page").removeClass("page-flipInRight");
+					}
+				});
+				$("#prev").click(function(){
+					$(".flip.out.left-page").addClass("page-flipOutRight");
+					$(".flip.in.right-page").addClass("page-flipInRight");
+					if($(".flip.out.right-page")[0].classList.length > 0){
+						$(".flip.out.right-page").removeClass("page-flipOutLeft");
+						$(".flip.in.left-page").removeClass("page-flipInLeft");
+					}
+				});
 			})
-			
         </script>
     </head>
 
-    <body >
+	<!-- Template
+		<div> //perspective
+			<div></div>
+		</div>
+	-->
+    <body>
         <button id="prev">
             prev
         </button>
@@ -77,7 +104,6 @@
         </button>
         <div class="wrapper">
             <div class="page-container">
-                <!--
                 <div class="flip in left-page">
                     <div class="content">
                         page2-1
@@ -88,8 +114,6 @@
                         page2-2
                     </div>                              
                 </div>
-                -->
-                    
                 <div class="flip out left-page">
                 	<div class="content">
                     	page1-1
