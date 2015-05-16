@@ -1,0 +1,53 @@
+
+* {
+        margin: 0;
+        padding: 0;
+}
+
+html{
+	height:100%;
+	
+}
+
+ body {
+    height:100%;
+    font-family: 'Lato', Calibri, Arial, sans-serif;
+	background: #fff;
+	font-weight: 400;
+	font-size: 100%;
+	color: #333;
+	
+	/* 중요 */
+    overflow: hidden;
+}
+
+a:active, a:link, a:visited {
+	text-decoration: none;
+	color:#333;
+}
+
+.wrapper {
+	width:100%;
+	height:100%;
+	position:relative;
+	background-color:#eee;
+	
+	/* 중요*/
+	display:-webkit-box;
+	-webkit-box-orient:vertical;
+	
+	
+}
+
+.page-container {
+	-webkit-perspective: 1200px;
+	width:100%;
+	height:100%;
+	position:absolute;
+	
+	/* 중요  */
+	display:-webkit-box;
+	-webkit-box-flex: 1;
+	overflow:scroll;
+	
+}

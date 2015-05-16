@@ -1,0 +1,82 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>transition</title>
+<style>
+	.container{
+		width:600px;
+		height:400px;
+		
+		position:absolute;
+		left:10px;
+		top:30px;
+		outline:1px solid #000;
+	}	
+	
+	#target {
+	    -webkit-transition-property: left top;			
+        -webkit-transition-duration:2s;
+        
+       /* ease-out 대신 cubic-bezier를 적용 해주세요. */       
+      /*-webkit-transition-timing-function:ease-out; */
+     -webkit-transition-timing-function:cubic-bezier(.05,1.17,.95,.1); 
+       position:absolute;
+       left:50px;
+       top:200px;
+        
+	}
+	
+</style>
+<script  type="text/javascript" src="../libs/jquery-2.1.1.min.js"> </script> 
+<script>
+	/*
+	 
+	 - 전환 대상 프로퍼티, CSS 속성이름을 작성해주면 됨  
+	  	-webkit-transition-property: left;		
+	 
+	 - 전환 시간 : 초 = s, 밀리초 = ms 		
+        -webkit-transition-duration:0.5s;
+     
+     - 움직임 함수 작성 : ease, linear, ease0in, ease-out, ease-in-out, cubic-bezier
+        -webkit-transition-timing-function: ease-out;
+	 
+	 */
+</script>
+<script>
+/*
+ * 베지어 활용 
+ * 베지어 값 구하기 : http://cubic-bezier.com/
+ * 
+ * 
+ */
+    var $target=null;
+	$(document).ready(function(){
+	    $target = $("#target");
+	   
+	    $("#start").click(function(){
+	    	var x = $("#xpos").val();
+	    	var y = $("#ypos").val();
+	    
+			$target.css({
+				left:x+"px",
+				top:y+"px"
+			});
+			
+	    })
+	})
+</script>
+</head>
+
+<body>
+	<div class="container">   
+	    <img src="ch2.png" id="target"> 	
+    </div>
+    
+    <div>
+        x:<input type="text" id="xpos">,
+        y:<input type="text" id="ypos">
+        <button id="start">확인</button>
+    </div>
+</body>
+</html>

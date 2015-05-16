@@ -1,0 +1,52 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>rotate</title>
+<style>
+	.rect
+	{
+		width:100px;
+		height:100px;
+		-webkit-border-radius:10px;
+		background:#ff0000;
+		margin:100px;
+		text-align:center;
+		-webkit-transition:all 0.5s ease-out; 
+		
+	}
+</style>
+
+<script  type="text/javascript" src="../libs/jquery-2.1.1.min.js"> </script> 
+<script>
+	var $target=null;
+	var nValue=0; 
+	$(document).ready(function(){
+	
+		$target		= $("#target");	
+		setInterval(autoRotate,1000);
+	});
+	
+	function autoRotate(){
+		var transForm		= "";
+		var nX				=(Math.random()*200);
+		var nY				=(Math.random()*200);
+		
+		// 여기에 코드를 입력해주세요.
+		// 여기에 코드를 입력해주세요.		
+		setInterval(function(){
+			nValue++;
+			
+			
+		},20)			
+
+	}
+</script>
+</head>
+
+<body>
+	<div id="target" class="rect">
+    	transForm, translate() test
+    </div>
+</body>
+</html>

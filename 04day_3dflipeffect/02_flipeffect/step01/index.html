@@ -1,0 +1,108 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title>image slider 스터디</title>
+        <meta charset="utf-8">
+        <link rel="stylesheet" type="text/css" href="style.css">
+
+        <script  type="text/javascript" src="../../libs/jquery-2.1.1.min.js"></script>
+        <script>
+			/*
+
+				step #10
+					- in right 페이지에 애니 추가
+					- 완료 
+					 
+					
+				step #09
+					- out left 페이지에 애니 추가
+					
+					
+			 	step #08
+			 		- step #07 문제점 해결
+			 		- z-index 활용 
+			 		
+			 	step #07
+			 		- out in 페이지 애니 합치기 
+			 		- 스타일 수정 없음.
+			 		- 문제점 
+			 				- 애니메이션 완료 후 page1-1이 상위에 나타남 
+			 		
+			 	step #06
+			 		- in left 페이지가 -90도 넘어가면 보이기 
+			 		
+			 	step #05
+			 		- in left 페이지 넘김 애니 추가  
+			 			- origin 잡기
+			 			- backface-visibility:hidden을 주석
+			 			- 애니메이션 추가 
+			 			
+			 		
+			 	step #04
+			 		- in 페이지 만들기
+			 		
+			 		
+			 	step #03
+			 		- out right 페이지가 -90도 넘어가는 경우 숨기기 
+			 		- backface-visibility:hidden 추가
+			 		
+			 		
+			 	step #02
+			 		- out right 페이지 넘기기 
+			 		
+			 	step #01
+			 		- 사라지는 flip 페이지 만들기
+			 		
+
+			 	http://tympanus.net/Tutorials/FullscreenBookBlock/
+			 */
+
+        </script>
+
+        <script>
+            
+			$(document).ready(function() {
+				
+			})
+			
+        </script>
+    </head>
+
+    <body >
+        <button id="prev">
+            prev
+        </button>
+        <button id="next">
+            next
+        </button>
+        <div class="wrapper">
+            <div class="page-container">
+                <!--
+                <div class="flip in left-page">
+                    <div class="content">
+                        page2-1
+                    </div>
+                </div>
+                <div class="flip in right-page">
+                    <div class="content">
+                        page2-2
+                    </div>                              
+                </div>
+                -->
+                    
+                <div class="flip out left-page">
+                	<div class="content">
+                    	page1-1
+                	</div>
+                </div>
+                <div class="flip out right-page">
+            		<div class="content">
+                		page1-2
+					</div>	                    		
+                </div>                
+            </div>
+        </div>
+    
+    </body>
+
+</html>

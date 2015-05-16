@@ -1,0 +1,71 @@
+
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>rotate</title>
+<style>
+	.rect
+	{
+		width:100px;
+		height:100px;
+		-webkit-border-radius:10px;
+		background:#ff0000;
+		margin:100px;
+		text-align:center;
+		
+		-webkit-transform-origin: 0% 0%;
+	}
+	
+	.point
+	{
+		width:20px;
+		height:20px;
+		position:absolute;
+		top:100px;
+		left:100px;
+		background:#000000;		
+	}
+	.pointText
+	{
+		position:absolute;
+		top:120px;
+		left:50px;
+		background:rgba(200,200,200,0.5);
+		
+		
+		
+	}
+</style>
+
+<script  type="text/javascript" src="../libs/jquery-2.1.1.min.js"> </script> 
+<script>
+	var $target=null;
+	var nValue=0; 
+	$(document).ready(function(){
+		$target		= $("#target");	
+		setInterval(autoRotate,20);
+	});
+	
+	function autoRotate(){
+		
+		//여기에 코드를 입력해주세요.
+		
+		
+	}
+</script>
+</head>
+
+<body>
+	<div id="target" class="rect">
+    	transForm, rotate() test
+    </div>
+    	
+    <div class="point">    	
+    </div>
+    <div class="pointText">
+    회원축: transform-origin(0%,0%);
+    </div>
+</body>
+</html>
+
